@@ -12,6 +12,8 @@ use App\Models\{
     AdmClass,
     AdmClassGroup,
     AdmStudent,
+    AdmTeacher,
+    AdmSchool,
     AdmAlumn
 };
 
@@ -19,6 +21,33 @@ class MasterController extends Controller
 {
     // Model
         private $model = [];
+
+    // School Page
+        public function schoolPage (Request $request)
+        {
+            try {
+                if ($request->has("submit-form")) {
+                    $this->model["admSchool"] = AdmSchool::find(session()->get("admSchool")->id);
+                    return view("application.school.form", $this->model);
+                } else if ($request->has("submit-save")) {
+                    $admSchool = AdmSchool::find(session()->get("admSchool")->id);
+                    $admSchool->name = $request->get("name");
+                    $admSchool->address = $request->get("address");
+                    $admSchool->email = $request->get("email");
+                    $admSchool->telp = $request->get("telp");
+                    $admSchool->fax = $request->get("fax");
+                    $admSchool->save();
+                    return Redirect::to(url("/master/school"))
+                                    ->with("actionSuccess", "Sukses menyimpan data !");
+                    return false;
+                }
+            } catch (Throwable $exception) {
+                return Redirect::to(url("/master/school"))
+                                ->with("actionError", "Terjadi kesalahan !");
+            }
+            $this->model["admSchool"] = AdmSchool::find(session()->get("admSchool")->id);
+            return view("application.school.view", $this->model);
+        }
 
     // Rule Page    
         public function rulePage (Request $request)
@@ -65,6 +94,49 @@ class MasterController extends Controller
             return view("application.alumn.list", $this->model);
         }
 
+    // Teacher Page 
+        public function teacherPage (Request $request)
+        {
+            try {
+                if ($request->has("submit-form")) {
+                    $this->model["admTeacher"] = $request->has("id") ? AdmTeacher::find($request->get("id")) : new AdmTeacher();
+                    return view("application.teacher.form", $this->model);
+                } else if ($request->has("submit-save")) {
+                    $admTeacher = $request->has("id") ? AdmTeacher::find($request->get("id")) : new AdmTeacher();
+                    $admTeacher->nip = $request->get("nip");
+                    $admTeacher->name = $request->get("name");
+                    $admTeacher->email = $request->get("email");
+                    $admTeacher->structural_pos = $request->get("structural_pos");
+                    $admTeacher->school_id = session()->get("admSchool")->id;
+                    $admTeacher->is_active = 1;
+                    if ($request->get("password")) {
+                        $admTeacher->password = bcrypt($request->get("password"));
+                    }
+                    if (!$admTeacher->role) {
+                        $admTeacher->role   =   1;
+                    }
+                    $admTeacher->save();
+                    return Redirect::to(url("/master/teacher"))
+                                    ->with("actionSuccess", "Sukses menyimpan data !");
+                    return false;
+                } else if ($request->has("submit-delete")) {
+                    $admTeacher = AdmTeacher::find($request->get("id"));
+                    $admTeacher->is_active = 0;
+                    $admTeacher->save();
+                    return Redirect::to(url("/master/teacher"))
+                                    ->with("actionSuccess", "Sukses menghapus data !");
+                }
+            } catch (Throwable $exception) {
+                return Redirect::to(url("/master/teacher"))
+                                ->with("actionError", "Terjadi kesalahan !");
+            }
+            $this->model["admTeacherList"] = AdmTeacher::where("school_id", session()->get("admSchool")->id)
+                                                        ->where("is_active", 1)
+                                                        ->orderBy("name", "ASC")
+                                                        ->paginate("10");
+            return view("application.teacher.list", $this->model);
+        }
+
     // Student Page 
         public function studentPage (Request $request)
         {
@@ -95,8 +167,8 @@ class MasterController extends Controller
                     $admStudent->vice_work = $request->get("vice_work");
                     $admStudent->school_id = session()->get("admSchool")->id;
                     $admStudent->is_active = 1;
-                    if ($admStudent->password == false) {
-                        $admStudent->password = bcrypt($request->get("nis") . "_" . session()->get("admSchool")->code);
+                    if ($request->get("password")) {
+                        $admStudent->password = bcrypt($request->get("password"));
                     }
                     $admStudent->save();
                     return Redirect::to(url("/master/student"))

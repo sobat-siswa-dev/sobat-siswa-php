@@ -9,4 +9,15 @@
 <link href="{{ asset('distRes/css/toastr.min.css') }}" rel="stylesheet">
 <script src="{{ asset('distRes/libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('distRes/libs/jquery/dist/jquery.min.js') }}"></script>
-<style>body{display: none}</style>
+<style>
+    body{
+        display: none;
+        overflow-x: hidden;
+    }
+    
+    @media (max-width: 768px) {
+        .navbar .navbar-nav .nav-link {
+            justify-content: start;
+        }
+    }
+</style>

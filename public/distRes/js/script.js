@@ -19,7 +19,7 @@ toastr.options = {
 $('[data-btn-function="export"]').remove();
 $("body").fadeIn(500);
 $(".table-responsive table tr td").each(function () {
-    if ($(this).text().trim() == '') {$(this).html('-')}
+    if ($(this).html().trim() == '') {$(this).html('-')}
 });
 
 function modalAlertDom (dom, title, description) {

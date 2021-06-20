@@ -9,7 +9,8 @@ use App\Http\Controllers\{
 
 use App\Http\Controllers\Application\{
     GlobalController,
-    MasterController
+    MasterController,
+    AttitudeController
 };
 
 /*
@@ -25,13 +26,21 @@ use App\Http\Controllers\Application\{
 
 Route::middleware("auth.custom")->group(function () {
     Route::get("/dashboard", [GlobalController::class, 'dashboardPage']);
+    Route::any("/changePassword", [GlobalController::class, 'changePasswordPage']);
     Route::prefix("/master")->group(function () {
         Route::any("/class", [MasterController::class, 'classPage']);
         Route::any("/classGroup", [MasterController::class, 'classGroupPage']);
         Route::any("/student", [MasterController::class, 'studentPage']);
+        Route::any("/teacher", [MasterController::class, 'teacherPage']);
         Route::any("/alumn", [MasterController::class, 'alumnPage']);
         Route::any("/rule", [MasterController::class, 'rulePage']);
+        Route::any("/school", [MasterController::class, 'schoolPage']);
     });  
+    Route::prefix("/attitude")->group(function () {
+        Route::any("/trophy", [AttitudeController::class, 'trophyPage']);
+        Route::any("/trophy/{id}", [AttitudeController::class, 'trophyDetailPage']);
+        Route::any("/studentSelector", [AttitudeController::class, 'studentSelectorPage']);
+    });
     Route::any("/logout", [LoginController::class, 'logoutPage']);
 });
 

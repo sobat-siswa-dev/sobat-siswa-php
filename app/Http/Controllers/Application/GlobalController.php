@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Application;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use Redirect, Hash;
+
 use App\Models\{
     AdmClass,
     AdmStudent,
@@ -32,5 +34,28 @@ class GlobalController extends Controller
                                                             ->where("is_active", 2)
                                                             ->count();
             return view("application.dashboard", $this->model);
+        }
+
+    // Change Password Page
+        public function changePasswordPage (Request $request)
+        {
+            try {
+                if ($request->has("submit-save")) {
+                    $admTeacher = AdmTeacher::find(session()->get("admTeacher")->id);
+                    if (Hash::check($request->get("old_password"), $admTeacher->password)) {
+                        $admTeacher->password   =   bcrypt($request->get("new_password"));
+                        $admTeacher->save();
+                        return Redirect::to(url("/dashboard"))
+                                    ->with("actionSuccess", "Sukses mengubah kata sandi !");
+                    } else {
+                        return Redirect::to(url("/changePassword"))
+                                ->with("actionError", "Kata sandi lama tidak sama !");
+                    }
+                }
+            } catch (Throwable $exception) {
+                return Redirect::to(url("/changePassword"))
+                                ->with("actionError", "Terjadi kesalahan !");
+            }
+            return view("application.changePassword", $this->model);
         }
 }

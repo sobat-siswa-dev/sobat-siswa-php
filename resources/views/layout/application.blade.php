@@ -23,11 +23,14 @@
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-toggle="dropdown">
                             <span class="avatar avatar-sm"
-                                style="background-image: url(https://app.sobatsiswa.id/public/adminAssets/img/theme/team-4-800x800.jpg)"></span>
+                                style="background-image: url({{ asset('./distRes/img/user-placeholder.png') }})"></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                            <a href="#" class="dropdown-item">Profil</a>
-                            <a href="#" class="dropdown-item">Ubah Kata Sandi</a>
+                            @if (session()->get("admTeacher"))
+                                <a href="#" class="dropdown-item bg-white">{{ session()->get("admTeacher")->name }}</a>
+                                <hr class="my-1">
+                                <a href="{{ url('/changePassword') }}" class="dropdown-item">Ubah Kata Sandi</a>
+                            @endif
                             <a href="{{ url('/logout') }}" class="dropdown-item">Keluar</a>
                         </div>
                     </div>
@@ -64,7 +67,7 @@
                                 <div class="dropdown-menu">
                                     <div class="dropdown-menu-columns">
                                         <div class="dropdown-menu-column">
-                                            <a class="dropdown-item" href="#">
+                                            <a class="dropdown-item" href="{{ url('master/school') }}">
                                                 Sekolah
                                             </a>
                                             <a class="dropdown-item" href="{{ url('master/classGroup') }}">
@@ -76,7 +79,7 @@
                                             <a class="dropdown-item" href="{{ url('master/student') }}">
                                                 Siswa
                                             </a>
-                                            <a class="dropdown-item" href="#">
+                                            <a class="dropdown-item" href="{{ url('master/teacher') }}">
                                                 Guru
                                             </a>
                                             <a class="dropdown-item" href="{{ url('master/alumn') }}">
@@ -89,7 +92,7 @@
                                     </div>
                                 </div>
                             </li>
-                            <li class="nav-item dropdown">
+                            <li class="nav-item dropdown" data-menu-parent="attitude">
                                 <a class="nav-link dropdown-toggle" href="#navbar-base" data-toggle="dropdown"
                                     role="button" aria-expanded="false">
                                     <span class="nav-link-icon d-md-none d-lg-inline-block">
@@ -112,7 +115,7 @@
                                 <div class="dropdown-menu">
                                     <div class="dropdown-menu-columns">
                                         <div class="dropdown-menu-column">
-                                            <a class="dropdown-item" href="#">
+                                            <a class="dropdown-item" href="{{ url('attitude/trophy') }}">
                                                 Catatan Prestasi
                                             </a>
                                             <a class="dropdown-item" href="#">
@@ -175,22 +178,6 @@
                                 </a>
                             </li>
                         </ul>
-                        <div
-                            class="ml-md-auto pl-md-4 py-2 py-md-0 mr-md-4 order-first order-md-last flex-grow-1 flex-md-grow-0">
-                            <form action="." method="get">
-                                <div class="input-icon">
-                                    <span class="input-icon-addon">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
-                                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                                            stroke-linecap="round" stroke-linejoin="round">
-                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                            <circle cx="10" cy="10" r="7" />
-                                            <line x1="21" y1="21" x2="15" y2="15" /></svg>
-                                    </span>
-                                    <input type="text" class="form-control form-control-dark" placeholder="Pencarian">
-                                </div>
-                            </form>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -199,22 +186,22 @@
         @include("assets/footer")
     </div>
     <div class="modal modal-blur fade" id="modal-alert" tabindex="-1" role="dialog" aria-hidden="true">
-      <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-body">
-            <div id="modal-alert-title" class="modal-title">Apakah anda yakin ?</div>
-            <div id="modal-alert-description">Jika anda yakin, maka akan terjadi suatu hal.</div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-link link-secondary mr-auto" data-dismiss="modal">Tidak</button>
-            <button type="button" id="modal-alert-trigger" class="btn btn-danger" data-dismiss="modal">Iya</button>
-          </div>
+        <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div id="modal-alert-title" class="modal-title">Apakah anda yakin ?</div>
+                    <div id="modal-alert-description">Jika anda yakin, maka akan terjadi suatu hal.</div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-link link-secondary mr-auto" data-dismiss="modal">Tidak</button>
+                    <button type="button" id="modal-alert-trigger" class="btn btn-danger" data-dismiss="modal">Iya</button>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
     <script>
         $(document).ready(function () {
-           $(`[data-menu-parent='@yield("menu-parent")']`).addClass("active");
+            $(`[data-menu-parent='@yield("menu-parent")']`).addClass("active");
         });
     </script>
 </body>
