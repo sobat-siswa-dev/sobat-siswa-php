@@ -24,7 +24,7 @@ class LoginController extends Controller
         public function teacherPage (Request $request)
         {
             if ($request->get("submit")) {
-                $admSchool = AdmSchool::first();
+                $admSchool = AdmSchool::where("code", $request->get("code"))->first();
                 if ($admSchool) {
                     $admTeacher = AdmTeacher::where("email", $request->get("teacher_email"))
                                             ->where("school_id", $admSchool->id)

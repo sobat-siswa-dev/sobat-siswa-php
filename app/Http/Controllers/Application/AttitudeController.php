@@ -12,16 +12,72 @@ use Redirect;
 
 use App\Models\{
     BehTrophy,
+    BehViolation,
     AdmTrophy,
     AdmClass,
-    AdmStudent
+    AdmStudent,
+    AdmRule
 };
 
 class AttitudeController extends Controller
 {
     // Model
         private $model = [];
-        
+
+    // Violation Page
+        public function violationPage (Request $request)
+        {
+            $this->model["admClassList"] = AdmClass::where("school_id", session()->get("admSchool")->id)
+                                                    ->where("is_active", 1)
+                                                    ->orderBy("name", "ASC")
+                                                    ->get();
+            return view("application.violation.list", $this->model);
+        }
+
+    // Violation Detail Page
+        public function violationDetailPage (Request $request, $id)
+        {
+            try {
+                if ($request->has("submit-form")) {
+                    $this->model["admRuleList"] = AdmRule::where("school_id", session()->get("admSchool")->id)
+                                                        ->where("is_active", 1)
+                                                        ->orderBy("code", "ASC")
+                                                        ->get();
+                    $this->model["behViolation"] = $request->has("id") ? BehViolation::find($request->get("id")) : new BehViolation();
+                    return view("application.violation.form", $this->model);
+                } else if ($request->has("submit-save")) {
+                    $behViolation = $request->has("id") ? BehViolation::find($request->get("id")) : new BehViolation();
+                    $admRule = AdmRule::find($request->get("rule_id"));
+                    $admStudent = AdmStudent::find($id);;
+                    $behViolation->get_at = $request->get("get_at");
+                    $behViolation->rule_id = $admRule->id;
+                    $behViolation->description = $admRule->description;
+                    $behViolation->poin = $admRule->poin;
+                    $behViolation->code = $admRule->code;
+                    $behViolation->student_id = $id;
+                    $behViolation->class_id = $admStudent->class_id;
+                    if ($request->file("attch")) {
+                        $behViolation->attch = Utility::uploadFile($request, "attch", "attch-violation/");
+                    }
+                    $behViolation->save();
+                    return Redirect::to(url('attitude/violation/' . $id))
+                                    ->with("actionSuccess", "Sukses menyimpan data !");
+                    return false;
+                } else if ($request->has("submit-delete")) {
+                    $behViolation = BehViolation::find($request->get("id"));
+                    $behViolation->delete();
+                    return Redirect::to(url('attitude/violation/' . $id))
+                                    ->with("actionSuccess", "Sukses menghapus data !");
+                }
+            } catch (Throwable $exception) {
+                return Redirect::to(url('attitude/violation/' . $id))
+                                ->with("actionError", "Terjadi kesalahan !");
+            }
+            $this->model["admStudent"]  =   AdmStudent::find($id);
+            $this->model["behViolationList"]   =   BehViolation::where("student_id", $id)->orderBy("get_at", "ASC")->get();
+            return view("application.violation.view", $this->model);
+        }
+
     // Trophy Page
         public function trophyPage (Request $request)
         {
@@ -64,7 +120,7 @@ class AttitudeController extends Controller
                                 ->with("actionError", "Terjadi kesalahan !");
             }
             $this->model["admStudent"]  =   AdmStudent::find($id);
-            $this->model["behTrophyList"]   =   BehTrophy::where("student_id", $id)->orderBy("get_at", "ASC")->paginate(10);
+            $this->model["behTrophyList"]   =   BehTrophy::where("student_id", $id)->orderBy("get_at", "ASC")->get();
             return view("application.trophy.view", $this->model);
         }
 

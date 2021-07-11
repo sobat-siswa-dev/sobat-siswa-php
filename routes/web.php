@@ -39,6 +39,8 @@ Route::middleware("auth.custom")->group(function () {
     Route::prefix("/attitude")->group(function () {
         Route::any("/trophy", [AttitudeController::class, 'trophyPage']);
         Route::any("/trophy/{id}", [AttitudeController::class, 'trophyDetailPage']);
+        Route::any("/violation", [AttitudeController::class, 'violationPage']);
+        Route::any("/violation/{id}", [AttitudeController::class, 'violationDetailPage']);
         Route::any("/studentSelector", [AttitudeController::class, 'studentSelectorPage']);
     });
     Route::any("/logout", [LoginController::class, 'logoutPage']);
@@ -52,8 +54,13 @@ Route::prefix("/registration")->group(function () {
     Route::any("/finish", [RegistrationController::class, 'finishPage'])->middleware("registration");
 });
 
+Route::any("/", function () {
+    return redirect(url('/login-student'));
+});
+
 Route::any("/login", function () {
     return redirect(url('/login-student'));
 });
+
 Route::any("/login-student", [LoginController::class, 'studentPage']);
 Route::any("/login-teacher", [LoginController::class, 'teacherPage']);

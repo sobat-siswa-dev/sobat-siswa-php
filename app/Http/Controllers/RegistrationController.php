@@ -13,13 +13,9 @@ class RegistrationController extends Controller
     // Root Page
         public function rootPage (Request $request)
         {
-            if (AdmSchool::first()) {
-                return redirect("login");
-            } else {
-                $admSchool = session()->get("admSchool") ? session()->get("admSchool") : new AdmSchool();
-                session(["admSchool" => $admSchool]);
-                return view("registration.root");
-            }
+            $admSchool = session()->get("admSchool") ? session()->get("admSchool") : new AdmSchool();
+            session(["admSchool" => $admSchool]);
+            return view("registration.root");
         }
         
     // Step 1 Page

@@ -24,11 +24,17 @@
                         <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-toggle="dropdown">
                             <span class="avatar avatar-sm"
                                 style="background-image: url({{ asset('./distRes/img/user-placeholder.png') }})"></span>
+                            <div class="d-none d-xl-block ps-2 ml-3">
+                                @if (session()->get("admTeacher"))
+                                    <div class="text-white">{{ session()->get("admTeacher")->name }}</div>
+                                    <div class="mt-1 small text-muted">Guru</div>
+                                @endif
+                            </div>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                             @if (session()->get("admTeacher"))
-                                <a href="#" class="dropdown-item bg-white">{{ session()->get("admTeacher")->name }}</a>
-                                <hr class="my-1">
+                                <a href="#" class="dropdown-item font-weight-bold bg-white d-block d-xl-none">{{ session()->get("admTeacher")->name }}</a>
+                                <hr class="my-1 d-block d-xl-none">
                                 <a href="{{ url('/changePassword') }}" class="dropdown-item">Ubah Kata Sandi</a>
                             @endif
                             <a href="{{ url('/logout') }}" class="dropdown-item">Keluar</a>
@@ -118,7 +124,7 @@
                                             <a class="dropdown-item" href="{{ url('attitude/trophy') }}">
                                                 Catatan Prestasi
                                             </a>
-                                            <a class="dropdown-item" href="#">
+                                            <a class="dropdown-item" href="{{ url('attitude/violation') }}">
                                                 Pelanggaran Tata Tertib
                                             </a>
                                             <a class="dropdown-item" href="#">

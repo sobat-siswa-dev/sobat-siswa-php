@@ -1,5 +1,5 @@
 @extends('layout.application')
-@section('title', 'Catatan Prestasi')
+@section('title', 'Pelanggaran Tata Tertib')
 @section('menu-parent', 'attitude')
 @section('content')
     <div class="content">
@@ -11,7 +11,7 @@
                             Evaluasi Perilaku
                         </div>
                         <h2 class="page-title">
-                            Catatan Prestasi
+                            Pelanggaran Tata Tertib
                         </h2>
                     </div>
                 </div>
@@ -46,10 +46,10 @@
                             </div>
                             <div class="form-group mb-3">
                                 <label class="form-label">
-                                    Jumlah Prestasi
+                                    Jumlah Pelanggaran
                                 </label>
                                 <div class="form-control">
-                                    {{ count($behTrophyList) + 0 }} Prestasi
+                                    {{ count($behViolationList) + 0 }} Pelanggaran
                                 </div>
                             </div>
                         </div>
@@ -76,8 +76,11 @@
                                         <th style="width: 150px;">
                                             Tanggal
                                         </th>
+                                        <th style="width: 150px;">
+                                            Poin
+                                        </th>
                                         <th>
-                                            Nama
+                                            Deskripsi
                                         </th>
                                         <th>
                                             Opsi
@@ -85,25 +88,23 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($behTrophyList as $behTrophy)
+                                    @foreach ($behViolationList as $behViolation)
                                         <tr>
                                             <td>
-                                                {{ date("d F Y", strtotime($behTrophy->get_at)) }}
+                                                {{ date("d M Y", strtotime($behViolation->get_at)) }}
                                             </td>
                                             <td>
-                                                {{ $behTrophy->name }}
-                                                @if ($behTrophy->level)
-                                                    <small class="d-block mt-1">
-                                                        Tingkat {{ $behTrophy->level }}
-                                                    </small>
-                                                @endif
+                                                {{ $behViolation->poin + 0 }} Poin
+                                            </td>
+                                            <td>
+                                                {{ $behViolation->code }}. {{ $behViolation->description }}
                                             </td>
                                             <td>
                                                 <form method="POST" action="">
                                                     {{ csrf_field() }}
-                                                    <input type="hidden" name="id" value="{{ $behTrophy->id }}"/>
-                                                    @if ($behTrophy->attch)
-                                                        <a style="text-decoration: none;" href="{{ asset($behTrophy->attch) }}" download>
+                                                    <input type="hidden" name="id" value="{{ $behViolation->id }}"/>
+                                                    @if ($behViolation->attch)
+                                                        <a style="text-decoration: none;" href="{{ asset($behViolation->attch) }}" download>
                                                             <button type="button" class="btn-table btn btn-sm btn-default">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon m-0" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" /><polyline points="7 11 12 16 17 11" /><line x1="12" y1="4" x2="12" y2="16" /></svg>
                                                             </button>
@@ -122,7 +123,7 @@
                                             </td>
                                         </tr>
                                     @endforeach
-                                    @if (count($behTrophyList) == false)
+                                    @if (count($behViolationList) == false)
                                         <tr>
                                             <td colspan="7">
                                                 <div class="my-3 mt-2">
@@ -140,7 +141,7 @@
                     </div>
                 </div>
                 <div class="col-6">
-                    <a href="{{ url('attitude/trophy') }}">
+                    <a href="{{ url('attitude/violation') }}">
                         <button type="button" class="btn btn-md btn-secondary mr-auto">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 13l-4 -4l4 -4m-4 4h11a4 4 0 0 1 0 8h-1" /></svg> Kembali
                         </button>  

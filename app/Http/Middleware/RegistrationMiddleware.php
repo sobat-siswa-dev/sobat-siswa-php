@@ -20,8 +20,6 @@ class RegistrationMiddleware
     {
         if (session()->get("admSchool")) {
             return $next($request);
-        } else if (AdmSchool::first()) {
-            return redirect(url("login"));
         } else {
             return redirect(url("registration"));
         }
