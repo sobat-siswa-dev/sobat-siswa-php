@@ -5,12 +5,16 @@ namespace App\Http\Controllers\Application;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-use Redirect, Hash;
+use Redirect, Hash, DB;
+
+use App\Http\Controllers\QueryUtility;
 
 use App\Models\{
     AdmClass,
     AdmStudent,
-    AdmTeacher
+    AdmTeacher,
+    BehTrophy,
+    BehViolation
 };
 
 class GlobalController extends Controller
@@ -33,6 +37,8 @@ class GlobalController extends Controller
             $this->model["admStudentAlumnCount"] = AdmStudent::where("school_id", session()->get("admSchool")->id)
                                                             ->where("is_active", 2)
                                                             ->count();
+            $this->model["behViolationRecent"] = DB::select(QueryUtility::queryRecentViolation(session()->get("admSchool")->id));
+            $this->model["behTrophyRecent"] = DB::select(QueryUtility::queryRecentTrophy(session()->get("admSchool")->id));
             return view("application.dashboard", $this->model);
         }
 

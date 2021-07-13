@@ -90,44 +90,48 @@
                             <table class="table card-table table-vcenter">
                                 <thead>
                                     <tr>
-                                        <th>
+                                        <th class="w-1">
                                             Tanggal
                                         </th>
                                         <th>
                                             Nama
                                         </th>
                                         <th>
-                                            Butir Tata Tertib
+                                            Poin
                                         </th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <!-- <tr>
-                                        <td class="text-nowrap text-muted">
-                                            <small>
-                                                23 Jan 2020
-                                            </small>
-                                        </td>
-                                        <td>
-                                            Muhammad
-                                            <small class="d-block">
-                                                (Kelas 9 Kreatif)
-                                            </small>
-                                        </td>
-                                        <td>
-                                            Terlambat Mengumpulkan Tugas 
-                                        </td>
-                                    </tr> -->
-                                    <tr>
-                                        <td colspan="3">
-                                            <div class="my-3 mt-2">
-                                                <img class="d-block m-auto" style="width: 200px; max-width: 100%;" src="{{ asset('./staticRes/empty.png') }}" alt="">
-                                                <h3 class="text-center" style="color: #2e576d; font-weight: bolder;">
-                                                    Tidak ada data
-                                                </h3>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                    @foreach ($behViolationRecent as $recent)
+                                        <tr>
+                                            <td class="text-nowrap text-muted">
+                                                <small>
+                                                    {{ date("d F Y", strtotime($recent->created_at)) }}
+                                                </small>
+                                            </td>
+                                            <td>
+                                                {{ $recent->name }}
+                                            </td>
+                                            <td>
+                                                {{ $recent->description }}
+                                                <small class="d-block">
+                                                    {{ $recent->poin + 0 }} Poin
+                                                </small>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                    @if (count($behViolationRecent) == 0)
+                                        <tr>
+                                            <td colspan="3">
+                                                <div class="my-3 mt-2">
+                                                    <img class="d-block m-auto" style="width: 200px; max-width: 100%;" src="{{ asset('./staticRes/empty.png') }}" alt="">
+                                                    <h3 class="text-center" style="color: #2e576d; font-weight: bolder;">
+                                                        Tidak ada data
+                                                    </h3>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    @endif
                                 </tbody>
                             </table>
                         </div>
@@ -142,36 +146,48 @@
                             <table class="table card-table table-vcenter">
                                 <thead>
                                     <tr>
+                                        <th class="w-1">
+                                            Tanggal
+                                        </th>
                                         <th>
                                             Nama
                                         </th>
                                         <th>
-                                            Deskripsi
+                                            Poin
                                         </th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <!-- <tr>
-                                        <td>
-                                            Muhammad
-                                            <small class="d-block">
-                                                (Kelas 9 Kreatif)
-                                            </small>
-                                        </td>
-                                        <td>
-                                            Terlambat Mengumpulkan Tugas 
-                                        </td>
-                                    </tr> -->
-                                    <tr>
-                                        <td colspan="2">
-                                            <div class="my-3 mt-2">
-                                                <img class="d-block m-auto" style="width: 200px; max-width: 100%;" src="{{ asset('./staticRes/empty.png') }}" alt="">
-                                                <h3 class="text-center" style="color: #2e576d; font-weight: bolder;">
-                                                    Tidak ada data
-                                                </h3>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                    @foreach ($behTrophyRecent as $recent)
+                                        <tr>
+                                            <td class="text-nowrap text-muted">
+                                                <small>
+                                                    {{ date("d F Y", strtotime($recent->created_at)) }}
+                                                </small>
+                                            </td>
+                                            <td>
+                                                {{ $recent->name }}
+                                            </td>
+                                            <td>
+                                                {{ $recent->description }}
+                                                <small class="d-block">
+                                                    {{ $recent->level }}
+                                                </small>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                    @if (count($behTrophyRecent) == 0)
+                                        <tr>
+                                            <td colspan="3">
+                                                <div class="my-3 mt-2">
+                                                    <img class="d-block m-auto" style="width: 200px; max-width: 100%;" src="{{ asset('./staticRes/empty.png') }}" alt="">
+                                                    <h3 class="text-center" style="color: #2e576d; font-weight: bolder;">
+                                                        Tidak ada data
+                                                    </h3>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    @endif
                                 </tbody>
                             </table>
                         </div>
