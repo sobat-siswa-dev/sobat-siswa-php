@@ -185,9 +185,24 @@ class MasterController extends Controller
                 return Redirect::to(url("/master/student"))
                                 ->with("actionError", "Terjadi kesalahan !");
             }
+            $this->model["admClassList"] = AdmClass::where("school_id", session()->get("admSchool")->id)
+                                                    ->where("is_active", 1)
+                                                    ->orderBy("name", "ASC")
+                                                    ->get();
             $this->model["admStudentList"] = AdmStudent::where("school_id", session()->get("admSchool")->id)
-                                                        ->where("is_active", 1)
-                                                        ->orderBy("class_id", "ASC")
+                                                        ->where("is_active", 1);
+            if ($request->get("class_id")) {
+                $this->model["admStudentList"] = $this->model["admStudentList"]->where("class_id", $request->get("class_id"));
+            }
+            if ($request->get("gender")) {
+                $this->model["admStudentList"] = $this->model["admStudentList"]->where("gender", $request->get("gender"));
+            }
+            if ($request->get("keyword")) {
+                $this->model["admStudentList"] = $this->model["admStudentList"]->where("name", "LIKE", "%" . $request->get("keyword") . "%")
+                                                                                ->orWhere("phone", "LIKE", "%" . $request->get("keyword") . "%")
+                                                                                ->orWhere("email", "LIKE", "%" . $request->get("keyword") . "%");
+            }
+            $this->model["admStudentList"] = $this->model["admStudentList"]->orderBy("class_id", "ASC")
                                                         ->orderBy("name", "ASC")
                                                         ->paginate("10");
             return view("application.student.list", $this->model);

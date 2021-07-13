@@ -19,5 +19,8 @@
         .navbar .navbar-nav .nav-link {
             justify-content: start;
         }
+        .table.card-table {
+            white-space: nowrap;
+        }
     }
 </style>

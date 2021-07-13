@@ -31,6 +31,67 @@
                                 </button>  
                             </form>
                         </div>
+                        <div class="card-body" style="border-bottom: 1px solid rgba(101,109,119,.16)">
+                            <form action="" method="GET">
+                                <div class="row">
+                                    <div class="col-md-3 mb-3 mb-md-0">
+                                        <div class="form-group">
+                                            <label class="form-label mb-2">
+                                                Kata Kunci
+                                            </label>
+                                            <input name="keyword" type="text" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 mb-3 mb-md-0">
+                                        <div class="form-group">
+                                            <label class="form-label mb-2">
+                                                Kelas
+                                            </label>
+                                            <select name="class_id" class="form-control">
+                                                <option value="">
+                                                    Pilih Kelas
+                                                </option>
+                                                @foreach ($admClassList as $admClass)
+                                                    <option value="{{ $admClass->id }}">
+                                                        {{ $admClass->name }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 mb-3 mb-md-0">
+                                        <div class="form-group">
+                                            <label class="form-label mb-2">
+                                                Jenis Kelamin
+                                            </label>
+                                            <select name="gender" class="form-control">
+                                                <option value="">
+                                                    Pilih Jenis Kelamin
+                                                </option>
+                                                <option value="L">
+                                                    Laki-laki
+                                                </option>
+                                                <option value="P">
+                                                    Perempuan
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 d-flex" style="align-items: flex-end;">
+                                        <button class="btn btn-sm btn-primary py-md-2 px-md-2">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="10" cy="10" r="7" /><line x1="21" y1="21" x2="15" y2="15" /></svg>
+                                            Cari
+                                        </button>
+                                        &nbsp;
+                                        &nbsp;
+                                        <button type="reset" class="btn btn-sm btn-warning py-md-2 px-md-2">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 12v-3a3 3 0 0 1 3 -3h13m-3 -3l3 3l-3 3" /><path d="M20 12v3a3 3 0 0 1 -3 3h-13m3 3l-3 -3l3 -3" /></svg>
+                                            Reset
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
                         <div class="table-responsive">
                             <table class="table card-table table-vcenter">
                                 <thead>
@@ -121,7 +182,7 @@
                             </table>
                         </div>
                         <div class="card-footer">
-                            {{ $admStudentList->links() }}
+                            {{ $admStudentList->withQueryString()->links() }}
                         </div>
                     </div>
                 </div>
@@ -129,4 +190,9 @@
         </div>
         @include("assets.copyright")
     </div>
+    <script>
+        $('[name="class_id"]').val('{{ isset($_GET["class_id"]) ? $_GET["class_id"] : "" }}');
+        $('[name="gender"]').val('{{ isset($_GET["gender"]) ? $_GET["gender"] : "" }}');
+        $('[name="keyword"]').val('{{ isset($_GET["keyword"]) ? $_GET["keyword"] : "" }}');
+    </script>
 @stop
