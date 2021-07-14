@@ -46,11 +46,11 @@
                 <div class="card-body">
                     <div class="mb-3">
                         <label class="form-label">Kode Sekolah</label>
-                        <input required="" name="code" type="text" maxlength="100" class="form-control">
+                        <input required="" name="code" type="text" maxlength="100" class="form-control" autocomplete="off">
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Email Pengguna</label>
-                        <input required="" name="teacher_email" type="email" maxlength="100" class="form-control">
+                        <input required="" name="teacher_email" type="email" maxlength="100" class="form-control" autocomplete="off">
                     </div>
                     <div class="mb-3">
                         <label class="form-label">

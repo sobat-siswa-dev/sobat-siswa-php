@@ -115,7 +115,7 @@
                                     <label class="form-label">
                                         Email
                                     </label>
-                                    <input name="email" value="{{ $admStudent->email }}" type="text" maxlength="100" class="form-control">
+                                    <input name="email" value="{{ $admStudent->email }}" type="text" maxlength="100" class="form-control" autocomplete="off">
                                 </div>
                                 <div class="form-group mb-3">
                                     <label class="form-label">
@@ -124,7 +124,7 @@
                                             <sup class="font-bold text-red">*</sup>
                                         @endif
                                     </label>
-                                    <input name="password" value="" type="password" maxlength="100" class="form-control" {{ $admStudent->id ? "" : "required=''" }}>
+                                    <input name="password" value="" type="password" maxlength="100" class="form-control" autocomplete="off" {{ $admStudent->id ? "" : "required=''" }}>
                                 </div>
                             </div>
                         </div>

@@ -22,6 +22,8 @@ $(".table-responsive table tr td").each(function () {
     if ($(this).html().trim() == '') {$(this).html('-')}
 });
 
+$('textarea').attr("spellcheck", "false")
+
 function modalAlertDom (dom, title, description) {
     window.domAlert = dom;
     $("#modal-alert-title").html(title);

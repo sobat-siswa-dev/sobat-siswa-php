@@ -7,6 +7,8 @@ use App\Http\Controllers\{
     Utility
 };
 
+use App\Exports\ExpViolation;
+
 use Illuminate\Http\Request;
 use Redirect;
 
@@ -23,6 +25,16 @@ class AttitudeController extends Controller
 {
     // Model
         private $model = [];
+
+    // Counseling Page
+        public function counselingPage (Request $request)
+        {
+            $this->model["admClassList"] = AdmClass::where("school_id", session()->get("admSchool")->id)
+                                                    ->where("is_active", 1)
+                                                    ->orderBy("name", "ASC")
+                                                    ->get();
+            return view("application.counseling.list", $this->model);
+        }
 
     // Violation Page
         public function violationPage (Request $request)
@@ -68,13 +80,21 @@ class AttitudeController extends Controller
                     $behViolation->delete();
                     return Redirect::to(url('attitude/violation/' . $id))
                                     ->with("actionSuccess", "Sukses menghapus data !");
+                } else if ($request->has("submit-export")) {
+                    $this->model["admStudent"]  =   AdmStudent::find($id);
+                    $this->model["behViolationList"]   =   BehViolation::where("student_id", $id)
+                                                                ->where("class_id", $this->model["admStudent"]->class_id)
+                                                                ->orderBy("get_at", "DESC")->get();
+                    return \Excel::download(new ExpViolation($this->model), "Data-Pelanggaran-NIS-" . $this->model["admStudent"]->nis . ".xlsx");
                 }
             } catch (Throwable $exception) {
                 return Redirect::to(url('attitude/violation/' . $id))
                                 ->with("actionError", "Terjadi kesalahan !");
             }
             $this->model["admStudent"]  =   AdmStudent::find($id);
-            $this->model["behViolationList"]   =   BehViolation::where("student_id", $id)->orderBy("get_at", "ASC")->get();
+            $this->model["behViolationList"]   =   BehViolation::where("student_id", $id)
+                                                        ->where("class_id", $this->model["admStudent"]->class_id)
+                                                        ->orderBy("get_at", "DESC")->get();
             return view("application.violation.view", $this->model);
         }
 
@@ -120,7 +140,7 @@ class AttitudeController extends Controller
                                 ->with("actionError", "Terjadi kesalahan !");
             }
             $this->model["admStudent"]  =   AdmStudent::find($id);
-            $this->model["behTrophyList"]   =   BehTrophy::where("student_id", $id)->orderBy("get_at", "ASC")->get();
+            $this->model["behTrophyList"]   =   BehTrophy::where("student_id", $id)->orderBy("get_at", "DESC")->get();
             return view("application.trophy.view", $this->model);
         }
 

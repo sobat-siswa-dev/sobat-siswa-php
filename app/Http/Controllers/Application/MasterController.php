@@ -7,6 +7,8 @@ use Throwable, Redirect;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use App\Exports\ExpStudent;
+
 use App\Models\{
     AdmRule,
     AdmClass,
@@ -180,15 +182,30 @@ class MasterController extends Controller
                     $admStudent->save();
                     return Redirect::to(url("/master/student"))
                                     ->with("actionSuccess", "Sukses menghapus data !");
+                } else if ($request->has("submit-export")) {
+                    $this->filterStudentPage($request);
+                    $this->model["admStudentList"] = $this->model["admStudentList"]->orderBy("class_id", "ASC")
+                                                                ->orderBy("name", "ASC")
+                                                                ->get();
+                    return \Excel::download(new ExpStudent($this->model), "Data-Siswa-" . date("dmyHis") . ".xlsx");
                 }
             } catch (Throwable $exception) {
                 return Redirect::to(url("/master/student"))
                                 ->with("actionError", "Terjadi kesalahan !");
             }
+            $this->filterStudentPage($request);
             $this->model["admClassList"] = AdmClass::where("school_id", session()->get("admSchool")->id)
                                                     ->where("is_active", 1)
                                                     ->orderBy("name", "ASC")
                                                     ->get();
+            $this->model["admStudentList"] = $this->model["admStudentList"]->orderBy("class_id", "ASC")
+                                                        ->orderBy("name", "ASC")
+                                                        ->paginate("10");
+            return view("application.student.list", $this->model);
+        }
+
+        public function filterStudentPage (Request $request)
+        {
             $this->model["admStudentList"] = AdmStudent::where("school_id", session()->get("admSchool")->id)
                                                         ->where("is_active", 1);
             if ($request->get("class_id")) {
@@ -202,10 +219,6 @@ class MasterController extends Controller
                                                                                 ->orWhere("phone", "LIKE", "%" . $request->get("keyword") . "%")
                                                                                 ->orWhere("email", "LIKE", "%" . $request->get("keyword") . "%");
             }
-            $this->model["admStudentList"] = $this->model["admStudentList"]->orderBy("class_id", "ASC")
-                                                        ->orderBy("name", "ASC")
-                                                        ->paginate("10");
-            return view("application.student.list", $this->model);
         }
 
     // Class Group Page

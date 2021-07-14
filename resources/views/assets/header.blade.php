@@ -6,7 +6,8 @@
 <link href="{{ asset('distRes/css/tabler-vendors.min.css') }}" rel="stylesheet" />
 <link href="{{ asset('distRes/css/demo.min.css') }}" rel="stylesheet" />
 <link href="{{ asset('distRes/css/custom.css') }}" rel="stylesheet" />
-<link href="{{ asset('distRes/css/toastr.min.css') }}" rel="stylesheet">
+<link href="{{ asset('distRes/css/toastr.min.css') }}" rel="stylesheet" />
+<link href="{{ asset('staticRes/favicon.png') }}" rel="icon" />
 <script src="{{ asset('distRes/libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('distRes/libs/jquery/dist/jquery.min.js') }}"></script>
 <style>

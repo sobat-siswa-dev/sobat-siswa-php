@@ -1,0 +1,81 @@
+<svg id="Group_6" data-name="Group 6" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.889" y1="0.213" x2="0.228" y2="0.98" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#4dbdec"/>
+      <stop offset="1" stop-color="#3955a4"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="0.111" y1="0.787" x2="0.772" y2="0.02" xlink:href="#linear-gradient"/>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_2" data-name="Rectangle 2" width="327" height="243" transform="translate(0.783)" fill="url(#linear-gradient)"/>
+    </clipPath>
+    <clipPath id="clip-path-2">
+      <rect id="Rectangle_2-2" data-name="Rectangle 2" width="327" height="243" fill="url(#linear-gradient-2)"/>
+    </clipPath>
+  </defs>
+  <g id="Group_4" data-name="Group 4">
+    <g id="Mask_Group_2" data-name="Mask Group 2" transform="translate(1592.217)" clip-path="url(#clip-path)">
+      <path id="Path_2" data-name="Path 2" d="M547.349,281.687s-108.088,0-133.043-99.821-99.821-24.955-157.218-99.821S169.745-40.236,169.745-40.236,606.462-27.758,606.462-20.272,547.349,281.687,547.349,281.687Z" transform="translate(-218.947 -39.621)" fill="url(#linear-gradient)"/>
+    </g>
+    <g id="Group_1" data-name="Group 1" transform="translate(30.375 18.629)">
+      <g id="Ellipse_1" data-name="Ellipse 1" transform="translate(-0.375 22.371)" fill="#fff" stroke="#3955a4" stroke-width="2">
+        <circle cx="14.5" cy="14.5" r="14.5" stroke="none"/>
+        <circle cx="14.5" cy="14.5" r="13.5" fill="none"/>
+      </g>
+      <path id="Union_1" data-name="Union 1" d="M13.215,13.215,0,26.431,13.215,13.215,0,26.431,13.215,13.215,0,0,13.215,13.215,0,0,13.215,13.215,26.431,0,13.215,13.215,26.431,0,13.215,13.215,26.431,26.431,13.215,13.215,26.431,26.431ZM13.215,13.215Z" transform="translate(60.218 42.222)" fill="none" stroke="#4dbdec" stroke-width="2"/>
+      <g id="Ellipse_2" data-name="Ellipse 2" transform="translate(62.625 100.371)" fill="#fff" stroke="#3955a4" stroke-width="2">
+        <circle cx="10" cy="10" r="10" stroke="none"/>
+        <circle cx="10" cy="10" r="9" fill="none"/>
+      </g>
+      <path id="Union_2" data-name="Union 2" d="M9.086,9.086,0,18.171,9.086,9.086,0,18.171,9.086,9.086,0,0,9.086,9.086,0,0,9.086,9.086,18.171,0,9.086,9.086,18.171,0,9.086,9.086l9.086,9.086L9.086,9.086l9.086,9.086ZM9.086,9.086Z" transform="translate(179.466 46.565)" fill="none" stroke="#3955a4" stroke-width="2"/>
+      <g id="Polygon_1" data-name="Polygon 1" transform="translate(9.138 91.375) rotate(24)" fill="#fff">
+        <path d="M 18.63120269775391 17.29764366149902 L 1.699514508247375 17.29764366149902 L 10.165358543396 2.059130191802979 L 18.63120269775391 17.29764366149902 Z" stroke="none"/>
+        <path d="M 10.165358543396 4.11824893951416 L 3.399026870727539 16.29764175415039 L 16.93169021606445 16.29764175415039 L 10.165358543396 4.11824893951416 M 10.165358543396 1.9073486328125e-06 L 20.33071899414063 18.29764366149902 L -1.9073486328125e-06 18.29764366149902 L 10.165358543396 1.9073486328125e-06 Z" stroke="none" fill="#4dbdec"/>
+      </g>
+      <g id="Polygon_2" data-name="Polygon 2" transform="translate(132.304 0) rotate(24)" fill="#fff">
+        <path d="M 24.7509937286377 23.39686012268066 L 1.678937792778015 23.39686012268066 L 13.2149658203125 2.099585056304932 L 24.7509937286377 23.39686012268066 Z" stroke="none"/>
+        <path d="M 13.2149658203125 4.199178695678711 L 3.357885360717773 22.3968620300293 L 23.07204627990723 22.3968620300293 L 13.2149658203125 4.199178695678711 M 13.2149658203125 1.9073486328125e-06 L 26.42993545532227 24.39686012268066 L -3.814697265625e-06 24.39686012268066 L 13.2149658203125 1.9073486328125e-06 Z" stroke="none" fill="#3955a4"/>
+      </g>
+      <g id="Rectangle_3" data-name="Rectangle 3" transform="translate(17.625 156.371)" fill="#fff" stroke="#4dbdec" stroke-width="2">
+        <rect width="22" height="21" stroke="none"/>
+        <rect x="1" y="1" width="20" height="19" fill="none"/>
+      </g>
+      <g id="Ellipse_3" data-name="Ellipse 3" transform="translate(118.625 59.371)" fill="#fff" stroke="#4dbdec" stroke-width="2">
+        <circle cx="15.5" cy="15.5" r="15.5" stroke="none"/>
+        <circle cx="15.5" cy="15.5" r="14.5" fill="none"/>
+      </g>
+    </g>
+  </g>
+  <g id="Group_5" data-name="Group 5" transform="translate(0 837)">
+    <g id="Mask_Group_2-2" data-name="Mask Group 2" clip-path="url(#clip-path-2)">
+      <path id="Path_2-2" data-name="Path 2" d="M228.857-40.236s108.088,0,133.043,99.821,99.821,24.955,157.218,99.821,87.344,122.281,87.344,122.281S169.745,269.21,169.745,261.723,228.857-40.236,228.857-40.236Z" transform="translate(-229.477 41.17)" fill="url(#linear-gradient-2)"/>
+    </g>
+    <g id="Group_1-2" data-name="Group 1" transform="translate(1691.988 47)">
+      <g id="Ellipse_1-2" data-name="Ellipse 1" transform="translate(169.012 126)" fill="#fff" stroke="#3955a4" stroke-width="2">
+        <circle cx="14.5" cy="14.5" r="14.5" stroke="none"/>
+        <circle cx="14.5" cy="14.5" r="13.5" fill="none"/>
+      </g>
+      <path id="Union_1-2" data-name="Union 1" d="M13.215,13.215,0,26.431,13.215,13.215,0,26.431,13.215,13.215,0,0,13.215,13.215,0,0,13.215,13.215,26.431,0,13.215,13.215,26.431,0,13.215,13.215,26.431,26.431,13.215,13.215,26.431,26.431ZM13.215,13.215Z" transform="translate(137.419 135.15) rotate(180)" fill="none" stroke="#4dbdec" stroke-width="2"/>
+      <g id="Ellipse_2-2" data-name="Ellipse 2" transform="translate(115.012 57)" fill="#fff" stroke="#3955a4" stroke-width="2">
+        <circle cx="10" cy="10" r="10" stroke="none"/>
+        <circle cx="10" cy="10" r="9" fill="none"/>
+      </g>
+      <path id="Union_2-2" data-name="Union 2" d="M9.086,9.086,0,18.171,9.086,9.086,0,18.171,9.086,9.086,0,0,9.086,9.086,0,0,9.086,9.086,18.171,0,9.086,9.086,18.171,0,9.086,9.086l9.086,9.086L9.086,9.086l9.086,9.086ZM9.086,9.086Z" transform="translate(18.171 130.806) rotate(180)" fill="none" stroke="#3955a4" stroke-width="2"/>
+      <g id="Polygon_1-2" data-name="Polygon 1" transform="matrix(-0.914, -0.407, 0.407, -0.914, 188.499, 85.996)" fill="#fff">
+        <path d="M 18.63120269775391 17.29764366149902 L 1.699514508247375 17.29764366149902 L 10.165358543396 2.059130191802979 L 18.63120269775391 17.29764366149902 Z" stroke="none"/>
+        <path d="M 10.165358543396 4.11824893951416 L 3.399026870727539 16.29764175415039 L 16.93169021606445 16.29764175415039 L 10.165358543396 4.11824893951416 M 10.165358543396 1.9073486328125e-06 L 20.33071899414063 18.29764366149902 L -1.9073486328125e-06 18.29764366149902 L 10.165358543396 1.9073486328125e-06 Z" stroke="none" fill="#4dbdec"/>
+      </g>
+      <g id="Polygon_2-2" data-name="Polygon 2" transform="matrix(-0.914, -0.407, 0.407, -0.914, 65.333, 177.371)" fill="#fff">
+        <path d="M 24.75099563598633 23.39686012268066 L 1.678939700126648 23.39686012268066 L 13.21496772766113 2.099585056304932 L 24.75099563598633 23.39686012268066 Z" stroke="none"/>
+        <path d="M 13.21496772766113 4.199178695678711 L 3.357887268066406 22.3968620300293 L 23.07204818725586 22.3968620300293 L 13.21496772766113 4.199178695678711 M 13.21496772766113 1.9073486328125e-06 L 26.4299373626709 24.39686012268066 L -1.9073486328125e-06 24.39686012268066 L 13.21496772766113 1.9073486328125e-06 Z" stroke="none" fill="#3955a4"/>
+      </g>
+      <g id="Rectangle_3-2" data-name="Rectangle 3" transform="translate(158.012 0)" fill="#fff" stroke="#4dbdec" stroke-width="2">
+        <rect width="22" height="21" stroke="none"/>
+        <rect x="1" y="1" width="20" height="19" fill="none"/>
+      </g>
+      <g id="Ellipse_3-2" data-name="Ellipse 3" transform="translate(48.012 87)" fill="#fff" stroke="#4dbdec" stroke-width="2">
+        <circle cx="15.5" cy="15.5" r="15.5" stroke="none"/>
+        <circle cx="15.5" cy="15.5" r="14.5" fill="none"/>
+      </g>
+    </g>
+  </g>
+</svg>

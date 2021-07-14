@@ -22,18 +22,19 @@
                 <div class="navbar-nav flex-row order-md-last">
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-toggle="dropdown">
-                            <span class="avatar avatar-sm"
-                                style="background-image: url({{ asset('./distRes/img/user-placeholder.png') }})"></span>
-                            <div class="d-none d-xl-block ps-2 ml-3">
-                                @if (session()->get("admTeacher"))
+                            @if (session()->get("admTeacher"))
+                                <span class="avatar avatar-sm" style="background-image: url({{ asset('./distRes/img/teacher-placeholder.png') }})"></span>
+                                <div class="d-none d-xl-block ps-2 ml-3">
                                     <div class="text-white">{{ session()->get("admTeacher")->name }}</div>
                                     <div class="mt-1 small text-muted">Guru</div>
-                                @endif
-                            </div>
+                                </div>
+                            @endif
                         </a>
                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                             @if (session()->get("admTeacher"))
-                                <a href="#" class="dropdown-item font-weight-bold bg-white d-block d-xl-none">{{ session()->get("admTeacher")->name }}</a>
+                                <a href="#" class="dropdown-item font-weight-bold bg-white d-block d-xl-none">
+                                    {{ session()->get("admTeacher")->name }} <span class="font-weight-normal">(Guru)</span>
+                                </a>
                                 <hr class="my-1 d-block d-xl-none">
                                 <a href="{{ url('/changePassword') }}" class="dropdown-item">Ubah Kata Sandi</a>
                             @endif
@@ -127,7 +128,7 @@
                                             <a class="dropdown-item" href="{{ url('attitude/violation') }}">
                                                 Pelanggaran Tata Tertib
                                             </a>
-                                            <a class="dropdown-item" href="#">
+                                            <a class="dropdown-item" href="{{ url('attitude/counseling') }}">
                                                 Bimbingan Konseling
                                             </a>
                                         </div>
