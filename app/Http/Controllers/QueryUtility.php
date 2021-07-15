@@ -6,6 +6,47 @@ use Illuminate\Http\Request;
 
 class QueryUtility
 {
+    public static function queryStatsTrendViolation ($school_id, $month, $year)
+    {
+        return "
+            select
+                bv.code,
+                bv.description, 
+                count(bv.id) as total,
+                sum(bv.poin) as totalpoin
+            from
+                beh_violation bv
+            join adm_student ast on
+                bv.student_id = ast.id
+            where 
+                ast.school_id = $school_id
+                and month(bv.get_at) = $month
+                and year(bv.get_at) = $year 
+            group by 
+                bv.code, bv.description
+            order by
+                sum(bv.poin) desc
+        ";
+    }
+
+    public static function queryStats6MonthViolation ($school_id, $month, $year)
+    {
+        return "
+            select
+                count(bv.id) as total,
+                MONTHNAME('$year-$month-1') as monthlabel,
+                $year as yearlabel
+            from
+                beh_violation bv
+            join adm_student ast on
+                bv.student_id = ast.id
+            where
+                ast.school_id = $school_id
+                and month(bv.get_at) = $month
+                and year(bv.get_at) = $year 
+        ";
+    }
+
     public static function queryRecentViolation ($school_id)
     {
         return "

@@ -4,13 +4,14 @@ namespace App\Http\Controllers\Application;
 
 use App\Http\Controllers\{
     Controller,
-    Utility
+    Utility,
+    QueryUtility
 };
 
 use App\Exports\ExpViolation;
 
 use Illuminate\Http\Request;
-use Redirect;
+use Redirect, DB;
 
 use App\Models\{
     BehTrophy,
@@ -26,6 +27,29 @@ class AttitudeController extends Controller
 {
     // Model
         private $model = [];
+
+    // Violation Statistic Page
+        public function violationStatisticPage (Request $request)
+        {
+            $searchResult = [];
+            $searchMonth = date("m");
+            $searchYear = date("Y");
+            $searchMonthTmp = $searchMonth;
+            $searchYearTmp = $searchYear;
+            $searchIdx = 0;
+            while ($searchIdx != 6) {
+                $searchResult[] = DB::select(QueryUtility::queryStats6MonthViolation(session()->get("admSchool")->id, $searchMonthTmp, $searchYearTmp))[0];
+                $searchMonthTmp--;
+                if ($searchMonthTmp < 1) {
+                    $searchMonthTmp = 12;
+                    $searchYearTmp--; 
+                }
+                $searchIdx++;
+            }
+            $this->model["graph"] = $searchResult;
+            $this->model["trend"] = DB::select(QueryUtility::queryStatsTrendViolation(session()->get("admSchool")->id, $searchMonth, $searchYear));
+            return view("application.statistic.violation", $this->model);
+        }
 
     // Counseling Page
         public function counselingPage (Request $request)

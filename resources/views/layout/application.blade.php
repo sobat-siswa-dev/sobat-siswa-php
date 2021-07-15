@@ -131,6 +131,9 @@
                                             <a class="dropdown-item" href="{{ url('attitude/counseling') }}">
                                                 Bimbingan Konseling
                                             </a>
+                                            <a class="dropdown-item" href="{{ url('attitude/violationStatistic') }}">
+                                                Statistik Pelanggaran
+                                            </a>
                                         </div>
                                     </div>
                                 </div>

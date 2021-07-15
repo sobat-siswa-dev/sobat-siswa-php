@@ -1,4 +1,5 @@
 <script src="{{ asset('distRes/libs/apexcharts/dist/apexcharts.min.js') }}"></script>
+<script src="{{ asset('distRes/libs/chartjs/dist/chart.js') }}"></script>
 <script src="{{ asset('distRes/libs/jqvmap/dist/jquery.vmap.min.js') }}"></script>
 <script src="{{ asset('distRes/libs/jqvmap/dist/maps/jquery.vmap.world.js') }}"></script>
 <script src="{{ asset('distRes/js/tabler.min.js') }}"></script>
