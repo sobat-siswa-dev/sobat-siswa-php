@@ -14,6 +14,8 @@
     body{
         display: none;
         overflow-x: hidden;
+        background-image: url("{{ asset('staticRes/edu.png') }}");
+        background-size: 75em;
     }
     
     @media (max-width: 768px) {

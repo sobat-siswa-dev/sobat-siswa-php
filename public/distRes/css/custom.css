@@ -31,11 +31,11 @@
     opacity: 1 !important;
 }
 
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .btn-table {
     display: block;
   }
-}
+} */
 
 .card-footer nav ul.pagination {
   margin-bottom: 0px; 

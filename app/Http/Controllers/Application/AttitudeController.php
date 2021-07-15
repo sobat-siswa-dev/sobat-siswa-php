@@ -190,7 +190,7 @@ class AttitudeController extends Controller
                                                         ->where("is_active", 1)
                                                         ->where("class_id", $request->get("class_id"))
                                                         ->orderBy("name", "ASC")
-                                                        ->paginate("10");
+                                                        ->get();
             $this->model["requestUrl"] =   $request->get("request_url");
             return view("application.studentSelector", $this->model);
         }

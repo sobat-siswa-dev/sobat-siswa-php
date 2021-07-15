@@ -49,18 +49,21 @@
                             <table class="table card-table table-vcenter">
                                 <thead>
                                     <tr>
-                                        <th>
+                                        <th style="width: 200px">
                                             Nomor Induk
                                         </th>
                                         <th>
                                             Nama
                                         </th>
-                                        <th></th>
+                                        <th>
+                                            Jumlah Prestasi
+                                        </th>
+                                        <th style="width: 100px;"></th>
                                     </tr>
                                 </thead>
                                 <tbody id="result">
                                     <tr>
-                                        <td colspan="3">
+                                        <td colspan="4">
                                             <div class="my-3 mt-2">
                                                 <img class="d-block m-auto" style="width: 200px; max-width: 100%;" src="{{ asset('./staticRes/empty.png') }}" alt="">
                                                 <h3 class="text-center" style="color: #2e576d; font-weight: bolder;">

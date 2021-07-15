@@ -20,4 +20,17 @@ class AdmStudent extends Model
     {
         return AdmAlumn::find($this->alumn_id);
     }
+
+    public function countTrophy () {
+        return BehTrophy::where("student_id", $this->id)->count();
+    }
+
+    public function countViolationPoin () {
+        $behViolationList = BehViolation::where("student_id", $this->id)->where("class_id", $this->class_id)->get();
+        $returnCount = 0;
+        foreach ($behViolationList as $behViolation) {
+            $returnCount += $behViolation->poin;
+        }
+        return $returnCount;
+    }
 }

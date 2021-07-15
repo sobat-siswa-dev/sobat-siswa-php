@@ -49,13 +49,16 @@
                             <table class="table card-table table-vcenter">
                                 <thead>
                                     <tr>
-                                        <th>
+                                        <th style="width: 200px">
                                             Nomor Induk
                                         </th>
                                         <th>
                                             Nama
                                         </th>
-                                        <th></th>
+                                        <th>
+                                            Jumlah Poin
+                                        </th>
+                                        <th style="width: 100px;"></th>
                                     </tr>
                                 </thead>
                                 <tbody id="result">

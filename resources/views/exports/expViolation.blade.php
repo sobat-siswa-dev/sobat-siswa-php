@@ -26,20 +26,20 @@
         <td></td>
     </tr>
     <tr>
-        <td width="20"><b>Tanggal</b></td>
-        <td width="45"><b>Tata Tertib</b></td>
-        <td width="10"><b>Poin</b></td>
+        <td style="border: 1px solid black;" width="20"><b>Tanggal</b></td>
+        <td style="border: 1px solid black;" width="45"><b>Tata Tertib</b></td>
+        <td style="border: 1px solid black;" width="10"><b>Poin</b></td>
     </tr>
     @foreach ($behViolationList as $behViolation)
         <tr>
-            <td>{{ date("d M Y", strtotime($behViolation->get_at)) }}</td>
-            <td>{{ $behViolation->code }}. {{ $behViolation->description }}</td>
-            <td>{{ $behViolation->poin + 0 }} Poin</td>
+            <td style="border: 1px solid black;">{{ date("d M Y", strtotime($behViolation->get_at)) }}</td>
+            <td style="border: 1px solid black;">{{ $behViolation->code }}. {{ $behViolation->description }}</td>
+            <td style="border: 1px solid black;">{{ $behViolation->poin + 0 }} Poin</td>
         </tr>
     @endforeach
     <tr>
-        <td colspan="2"><b>Jumlah</b></td>
-        <td>
+        <td style="border: 1px solid black;" colspan="2"><b>Jumlah</b></td>
+        <td style="border: 1px solid black;">
             <?php
                 $behViolationPoin = 0;
                 foreach ($behViolationList as $behViolation) {
