@@ -15,6 +15,7 @@ use Redirect;
 use App\Models\{
     BehTrophy,
     BehViolation,
+    BehCounseling,
     AdmTrophy,
     AdmClass,
     AdmStudent,
@@ -34,6 +35,44 @@ class AttitudeController extends Controller
                                                     ->orderBy("name", "ASC")
                                                     ->get();
             return view("application.counseling.list", $this->model);
+        }
+
+    // Counseling Detail Page
+        public function counselingDetailPage (Request $request, $id)
+        {
+            try {
+                if ($request->has("submit-form")) {
+                    $this->model["behCounseling"] = $request->has("id") ? BehCounseling::find($request->get("id")) : new BehCounseling();
+                    return view("application.counseling.form", $this->model);
+                } else if ($request->has("submit-save")) {
+                    $behCounseling = $request->has("id") ? BehCounseling::find($request->get("id")) : new BehCounseling();
+                    $admStudent = AdmStudent::find($id);
+                    $behCounseling->held_date = $request->get("held_date");
+                    $behCounseling->place = $request->get("place");
+                    $behCounseling->problem = $request->get("problem");
+                    $behCounseling->solution = $request->get("solution");
+                    $behCounseling->student_id = $id;
+                    $behCounseling->class_id = $admStudent->class_id;
+                    if ($request->file("attch")) {
+                        $behCounseling->attch = Utility::uploadFile($request, "attch", "attch-counseling/");
+                    }
+                    $behCounseling->save();
+                    return Redirect::to(url('attitude/counseling/' . $id))
+                                    ->with("actionSuccess", "Sukses menyimpan data !");
+                    return false;
+                } else if ($request->has("submit-delete")) {
+                    $behCounseling = BehCounseling::find($request->get("id"));
+                    $behCounseling->delete();
+                    return Redirect::to(url('attitude/counseling/' . $id))
+                                    ->with("actionSuccess", "Sukses menghapus data !");
+                }
+            } catch (Throwable $exception) {
+                return Redirect::to(url('attitude/counseling/' . $id))
+                                ->with("actionError", "Terjadi kesalahan !");
+            }
+            $this->model["admStudent"]  =   AdmStudent::find($id);
+            $this->model["behCounselingList"]   =   BehCounseling::where("student_id", $id)->orderBy("held_date", "DESC")->get();
+            return view("application.counseling.view", $this->model);
         }
 
     // Violation Page

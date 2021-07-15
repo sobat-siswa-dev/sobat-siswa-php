@@ -42,6 +42,7 @@ Route::middleware("auth.custom")->group(function () {
         Route::any("/violation", [AttitudeController::class, 'violationPage']);
         Route::any("/violation/{id}", [AttitudeController::class, 'violationDetailPage']);
         Route::any("/counseling", [AttitudeController::class, 'counselingPage']);
+        Route::any("/counseling/{id}", [AttitudeController::class, 'counselingDetailPage']);
         Route::any("/studentSelector", [AttitudeController::class, 'studentSelectorPage']);
     });
     Route::any("/logout", [LoginController::class, 'logoutPage']);
