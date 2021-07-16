@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use Hash, Redirect;
 use App\Models\{
     AdmSchool,
-    AdmTeacher
+    AdmTeacher,
+    AdmStudent
 };
 
 class LoginController extends Controller
@@ -17,6 +18,28 @@ class LoginController extends Controller
     // Student Page   
         public function studentPage (Request $request)
         {
+            if ($request->get("submit")) {
+                $admSchool = AdmSchool::where("code", $request->get("code"))->first();
+                if ($admSchool) {
+                    $admStudent = AdmStudent::where("nis", $request->get("student_nis"))
+                                            ->where("school_id", $admSchool->id)
+                                            ->first();
+                    if ($admStudent) {
+                        if (Hash::check($request->get("student_password"), $admStudent->password)) {
+                            session([
+                                "displayName" => $admStudent->name,
+                                "loginStudentToken" => bcrypt(date("Y-m-d H:i:s")),
+                                "admStudent" => $admStudent,
+                                "admSchool" => $admSchool
+                            ]);
+                            return Redirect::to(url("/stdashboard"))->with("actionSuccess", "Selamat datang di Sobat Siswa");
+                        }
+                    }
+                    $this->model["actionError"] = "Informasi akun yang diberikan salah !";
+                } else {
+                    $this->model["actionError"] = "Sekolah tidak terdaftar !";
+                }
+            }
             return view("login.student");
         }
 

@@ -8,6 +8,9 @@ use App\Http\Controllers\{
 };
 
 use App\Http\Controllers\Application\{
+    StGlobalController,
+    StAttitudeController,
+
     GlobalController,
     MasterController,
     AttitudeController
@@ -47,6 +50,18 @@ Route::middleware("auth.custom")->group(function () {
         Route::any("/violationStatistic", [AttitudeController::class, 'violationStatisticPage']);
     });
     Route::any("/logout", [LoginController::class, 'logoutPage']);
+});
+
+Route::middleware("auth.student.custom")->group(function () {
+    Route::get("/stdashboard", [StGlobalController::class, 'stdashboardPage']);
+    Route::prefix("/stattitude")->group(function () {
+        Route::get("/", function () {
+            return redirect(url('/stattitude/trophy'));
+        });
+        Route::any("/trophy", [StAttitudeController::class, 'stTrophyPage']);
+        Route::any("/violation", [StAttitudeController::class, 'stViolationPage']);
+        Route::any("/counseling", [StAttitudeController::class, 'stCounselingPage']);
+    });
 });
 
 Route::prefix("/registration")->group(function () {

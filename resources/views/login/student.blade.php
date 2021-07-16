@@ -11,7 +11,7 @@
         <div class="text-center mb-4">
             <a href="."><img src="{{ asset('staticRes/monogram-logo.svg') }}" height="25" alt=""></a>
         </div>
-        <form action="{{ url('registration/step-1') }}" method="POST">
+        <form action="" method="POST">
             {{ csrf_field() }}
             <div class="card card-md">
                 <div class="card-body text-center py-3">
@@ -50,17 +50,17 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Nomor Induk Siswa</label>
-                        <input type="email" class="form-control" autocomplete="off">
+                        <input type="text" name="student_nis" class="form-control" autocomplete="off">
                     </div>
                     <div class="mb-3">
                         <label class="form-label">
                             Kata Sandi
                         </label>
                         <div class="input-group input-group-flat">
-                            <input type="password" class="form-control" autocomplete="off">
+                            <input type="password" name="student_password" class="form-control" autocomplete="off">
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary w-100">
+                    <button type="submit" name="submit" value="submit" class="btn btn-primary w-100">
                         Masuk
                     </button>
                 </div>
