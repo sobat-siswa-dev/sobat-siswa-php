@@ -49,11 +49,11 @@ Route::middleware("auth.custom")->group(function () {
         Route::any("/studentSelector", [AttitudeController::class, 'studentSelectorPage']);
         Route::any("/violationStatistic", [AttitudeController::class, 'violationStatisticPage']);
     });
-    Route::any("/logout", [LoginController::class, 'logoutPage']);
 });
 
 Route::middleware("auth.student.custom")->group(function () {
     Route::get("/stdashboard", [StGlobalController::class, 'stdashboardPage']);
+    Route::any("/stchangePassword", [StGlobalController::class, 'stChangePasswordPage']);
     Route::prefix("/stattitude")->group(function () {
         Route::get("/", function () {
             return redirect(url('/stattitude/trophy'));
@@ -80,5 +80,6 @@ Route::any("/login", function () {
     return redirect(url('/login-student'));
 });
 
+Route::any("/logout", [LoginController::class, 'logoutPage']);
 Route::any("/login-student", [LoginController::class, 'studentPage']);
 Route::any("/login-teacher", [LoginController::class, 'teacherPage']);

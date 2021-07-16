@@ -153,7 +153,7 @@
                                             Nama
                                         </th>
                                         <th>
-                                            Poin
+                                            Deskripsi
                                         </th>
                                     </tr>
                                 </thead>
