@@ -17,11 +17,12 @@ toastr.options = {
 };
 
 $('[data-btn-function="export"]').remove();
-$("body").fadeIn(500);
+$("body").fadeIn(1000);
 $(".table-responsive table tr td").each(function () {
     if ($(this).html().trim() == '') {$(this).html('-')}
 });
 
+$('.select-search').select2();
 $('textarea').attr("spellcheck", "false")
 
 function modalAlertDom (dom, title, description) {

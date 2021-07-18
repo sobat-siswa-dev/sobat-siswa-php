@@ -4,7 +4,11 @@ namespace App\Http\Controllers\Application;
 
 use Throwable, Redirect;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\{
+    Controller,
+    Utility
+};
+
 use Illuminate\Http\Request;
 
 use App\Exports\ExpStudent;
@@ -38,10 +42,12 @@ class MasterController extends Controller
                     $admSchool->email = $request->get("email");
                     $admSchool->telp = $request->get("telp");
                     $admSchool->fax = $request->get("fax");
+                    if ($request->file("attch")) {
+                        $admSchool->logo = Utility::uploadFile($request, "attch", "attch-school/");
+                    }
                     $admSchool->save();
                     return Redirect::to(url("/master/school"))
                                     ->with("actionSuccess", "Sukses menyimpan data !");
-                    return false;
                 }
             } catch (Throwable $exception) {
                 return Redirect::to(url("/master/school"))
@@ -107,6 +113,9 @@ class MasterController extends Controller
                     $admTeacher = $request->has("id") ? AdmTeacher::find($request->get("id")) : new AdmTeacher();
                     $admTeacher->nip = $request->get("nip");
                     $admTeacher->name = $request->get("name");
+                    $admTeacher->phone = $request->get("phone");
+                    $admTeacher->whatsapp = $request->get("whatsapp");
+                    $admTeacher->address = $request->get("address");
                     $admTeacher->email = $request->get("email");
                     $admTeacher->structural_pos = $request->get("structural_pos");
                     $admTeacher->school_id = session()->get("admSchool")->id;

@@ -54,6 +54,7 @@ Route::middleware("auth.custom")->group(function () {
 Route::middleware("auth.student.custom")->group(function () {
     Route::get("/stdashboard", [StGlobalController::class, 'stdashboardPage']);
     Route::any("/stchangePassword", [StGlobalController::class, 'stChangePasswordPage']);
+    Route::any("/stbiodata", [StGlobalController::class, 'stBiodataPage']);
     Route::prefix("/stattitude")->group(function () {
         Route::get("/", function () {
             return redirect(url('/stattitude/trophy'));

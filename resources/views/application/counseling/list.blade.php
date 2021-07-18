@@ -24,7 +24,7 @@
                                 <label class="form-label">
                                     Kelas <sup class="font-bold text-red">*</sup>
                                 </label>
-                                <select required="" class="form-control" name="class_id">
+                                <select required="" class="form-control select-search" name="class_id">
                                     <option value="">
                                         Pilih Kelas
                                     </option>

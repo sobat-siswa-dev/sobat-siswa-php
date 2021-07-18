@@ -17,7 +17,7 @@
                 </div>
             </div>
             <div class="row row-deck row-cards">
-                <div class="col-12 d-block">
+                <div class="col-12 col-lg-12 d-block">
                     <div class="card">
                         <div class="card-header">
                             <form method="POST" action="">
@@ -28,44 +28,68 @@
                             </form>
                         </div>
                         <div class="card-body">
-                            <div class="form-group mb-3">
-                                <label class="form-label">
-                                    Nama
-                                </label>
-                                <div class="form-control">
-                                    {{ $admSchool->name }}
+                            <div class="row">
+                                <div class="col-lg-9">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="form-group mb-3">
+                                                <label class="form-label">
+                                                    Nama
+                                                </label>
+                                                <div class="form-control">
+                                                    {{ $admSchool->name }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="form-group mb-3">
+                                                <label class="form-label">
+                                                    Email
+                                                </label>
+                                                <div class="form-control">
+                                                    {{ $admSchool->email }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group mb-3">
+                                                <label class="form-label">
+                                                    Telp
+                                                </label>
+                                                <div class="form-control">
+                                                    {{ $admSchool->telp }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group mb-3">
+                                                <label class="form-label">
+                                                    Fax
+                                                </label>
+                                                <div class="form-control">
+                                                    {{ $admSchool->fax }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="form-group mb-3">
+                                                <label class="form-label">
+                                                    Alamat
+                                                </label>
+                                                <div class="form-control">
+                                                    {{ $admSchool->address }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group mb-3">
-                                <label class="form-label">
-                                    Email
-                                </label>
-                                <div class="form-control">
-                                    {{ $admSchool->email }}
-                                </div>
-                            </div>
-                            <div class="form-group mb-3">
-                                <label class="form-label">
-                                    Telp
-                                </label>
-                                <div class="form-control">
-                                    {{ $admSchool->telp }}
-                                </div>
-                            </div>
-                            <div class="form-group mb-3">
-                                <label class="form-label">
-                                    Fax
-                                </label>
-                                <div class="form-control">
-                                    {{ $admSchool->fax }}
-                                </div>
-                            </div>
-                            <div class="form-group mb-3">
-                                <label class="form-label">
-                                    Alamat
-                                </label>
-                                <div class="form-control">
-                                    {{ $admSchool->address }}
+                                <div class="col-lg-3">
+                                    <div class="form-group mb-3">
+                                        <label class="form-label">
+                                            Logo
+                                        </label>
+                                        <img src="{{ asset($admSchool->logo ? $admSchool->logo : './distRes/img/school-placeholder.png') }}" alt="Logo Sekolah" class="form-control p-0">
+                                    </div>
                                 </div>
                             </div>
                         </div>

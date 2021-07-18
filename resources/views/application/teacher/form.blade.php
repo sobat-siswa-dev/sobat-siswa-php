@@ -22,41 +22,86 @@
                     <input type="hidden" name="id" value="{{ $admTeacher->id }}" />
                 @endif
                 <div class="row row-deck row-cards">
-                    <div class="col-12 d-block">
+                    <div class="col-12 col-lg-8 d-block">
                         <div class="card">
+                            <div class="card-header">
+                                <h3 class="mb-0">
+                                    Data Pribadi dan Akun
+                                </h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div class="form-group mb-3">
+                                            <label class="form-label">
+                                                NIP <sup class="font-bold text-red">*</sup>
+                                            </label>
+                                            <input name="nip" required="" value="{{ $admTeacher->nip }}" type="text" maxlength="100" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <div class="form-group mb-3">
+                                            <label class="form-label">
+                                                Nama <sup class="font-bold text-red">*</sup>
+                                            </label>
+                                            <input name="name" required="" value="{{ $admTeacher->name }}" type="text" maxlength="100" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="form-group mb-3">
+                                            <label class="form-label">
+                                                Jabatan Struktural
+                                            </label>
+                                            <input name="structural_pos" value="{{ $admTeacher->structural_pos }}" type="text" maxlength="100" class="form-control">
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <label class="form-label">
+                                                Email <sup class="font-bold text-red">*</sup>
+                                            </label>
+                                            <input autocomplete="off" name="email" required="" value="{{ $admTeacher->email }}" type="email" maxlength="100" class="form-control">
+                                            <div class="d-none d-md-block mt-2">
+                                                <small class="form-hint mb-3">Email akan digunakan untuk masuk sebagai guru.</small>
+                                            </div>
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <label class="form-label">
+                                                {{ $admTeacher->id ? "Ubah" : "" }} Kata Sandi 
+                                                @if (!$admTeacher->id)
+                                                    <sup class="font-bold text-red">*</sup>
+                                                @endif
+                                            </label>
+                                            <input autocomplete="off" name="password" value="" type="password" maxlength="100" class="form-control" {{ $admTeacher->id ? "" : "required=''" }}>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-4 d-block">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="mb-0">
+                                    Data Kontak
+                                </h3>
+                            </div>
                             <div class="card-body">
                                 <div class="form-group mb-3">
                                     <label class="form-label">
-                                        NIP <sup class="font-bold text-red">*</sup>
+                                        Telp <sup class="font-bold text-red">*</sup>
                                     </label>
-                                    <input name="nip" required="" value="{{ $admTeacher->nip }}" type="text" maxlength="100" class="form-control">
+                                    <input name="phone" required="" value="{{ $admTeacher->phone }}" type="text" maxlength="100" class="form-control">
                                 </div>
                                 <div class="form-group mb-3">
                                     <label class="form-label">
-                                        Nama <sup class="font-bold text-red">*</sup>
+                                        Whatsapp
                                     </label>
-                                    <input name="name" required="" value="{{ $admTeacher->name }}" type="text" maxlength="100" class="form-control">
+                                    <input name="whatsapp" value="{{ $admTeacher->whatsapp }}" type="text" maxlength="100" class="form-control">
                                 </div>
                                 <div class="form-group mb-3">
                                     <label class="form-label">
-                                        Email <sup class="font-bold text-red">*</sup>
+                                        Alamat <sup class="font-bold text-red">*</sup>
                                     </label>
-                                    <input name="email" required="" value="{{ $admTeacher->email }}" type="email" maxlength="100" class="form-control">
-                                </div>
-                                <div class="form-group mb-3">
-                                    <label class="form-label">
-                                        Jabatan
-                                    </label>
-                                    <input name="structural_pos" value="{{ $admTeacher->structural_pos }}" type="text" maxlength="100" class="form-control">
-                                </div>
-                                <div class="form-group mb-3">
-                                    <label class="form-label">
-                                        {{ $admTeacher->id ? "Ubah" : "" }} Kata Sandi 
-                                        @if (!$admTeacher->id)
-                                            <sup class="font-bold text-red">*</sup>
-                                        @endif
-                                    </label>
-                                    <input name="password" value="" type="password" maxlength="100" class="form-control" {{ $admTeacher->id ? "" : "required=''" }}>
+                                    <textarea name="address" required="" class="form-control" maxlength="255" name="address">{{ $admTeacher->address }}</textarea>
                                 </div>
                             </div>
                         </div>

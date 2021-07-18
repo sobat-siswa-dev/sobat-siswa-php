@@ -48,6 +48,7 @@
                                     {{ session()->get("admStudent")->name }} <span class="font-weight-normal">(Siswa)</span>
                                 </a>
                                 <hr class="my-1 d-block d-xl-none">
+                                <a href="{{ url('/stbiodata') }}" class="dropdown-item">Biodata</a>
                                 <a href="{{ url('/stchangePassword') }}" class="dropdown-item">Ubah Kata Sandi</a>
                             @endif
                             <a href="{{ url('/logout') }}" class="dropdown-item">Keluar</a>

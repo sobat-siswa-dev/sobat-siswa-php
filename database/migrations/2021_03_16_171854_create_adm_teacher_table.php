@@ -17,6 +17,9 @@ class CreateAdmTeacherTable extends Migration
             $table->integer('id', true);
             $table->string('name')->nullable();
             $table->string('email')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('whatsapp')->nullable();
+            $table->text('address')->nullable();
             $table->string('password', 100)->nullable();
             $table->integer('school_id')->nullable();
             $table->timestamps();

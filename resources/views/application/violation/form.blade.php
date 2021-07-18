@@ -35,7 +35,7 @@
                                     <label class="form-label">
                                         Tata Tertib <sup class="font-bold text-red">*</sup>
                                     </label>
-                                    <select class="form-control" name="rule_id" required="true">
+                                    <select class="form-control select-search" name="rule_id" required="true">
                                         <option value="">
                                             Pilih Tata Tertib
                                         </option>

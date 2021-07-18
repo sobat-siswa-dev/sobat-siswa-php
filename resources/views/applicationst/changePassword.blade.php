@@ -1,6 +1,6 @@
 @extends('layout.application')
 @section('title', 'Kelas')
-@section('menu-parent', 'master')
+@section('menu-parent', 'global')
 @section('content')
     <div class="content">
         <div class="container-xl">

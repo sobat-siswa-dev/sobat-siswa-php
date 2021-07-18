@@ -68,7 +68,7 @@ class QueryUtility
                 ac.school_id = $school_id 
             order by
                 bv.id desc
-            limit 5
+            limit 3
         ";
     }
 
@@ -89,7 +89,7 @@ class QueryUtility
                 ast.school_id = $school_id
             order by
                 bt.id desc
-            limit 5
+            limit 3
         ";
     }
 }

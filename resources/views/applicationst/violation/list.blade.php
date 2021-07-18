@@ -34,7 +34,7 @@
                                     ?>
                                 </div>
                             </div>
-                            <div class="form-group mb-3">
+                            <div class="form-group">
                                 <label class="form-label">
                                     Jumlah Pelanggaran
                                 </label>

@@ -32,7 +32,7 @@ class StGlobalController extends Controller
             return view("applicationst.dashboard", $this->model);
         }
 
-    // Change Password Page
+    // St Change Password Page
         public function stChangePasswordPage (Request $request)
         {
             try {
@@ -53,5 +53,36 @@ class StGlobalController extends Controller
                                 ->with("actionError", "Terjadi kesalahan !");
             }
             return view("applicationst.changePassword", $this->model);
+        }
+
+    // St Biodata Page 
+        public function stBiodataPage (Request $request)
+        {
+            try {
+                if ($request->has("submit-save")) {
+                    $admStudent = AdmStudent::find(session()->get("admStudent")->id);
+                    $admStudent->place_birth = $request->get("place_birth");
+                    $admStudent->date_birth = $request->get("date_birth");
+                    $admStudent->gender = $request->get("gender");
+                    $admStudent->address = $request->get("address");
+                    $admStudent->phone = $request->get("phone");
+                    $admStudent->email = $request->get("email");
+                    $admStudent->father_name = $request->get("father_name");
+                    $admStudent->father_work = $request->get("father_work");
+                    $admStudent->mother_name = $request->get("mother_name");
+                    $admStudent->mother_work = $request->get("mother_work");
+                    $admStudent->vice_name = $request->get("vice_name");
+                    $admStudent->vice_work = $request->get("vice_work");
+                    $admStudent->save();
+                    return Redirect::to(url("/stbiodata"))
+                                    ->with("actionSuccess", "Sukses menyimpan data !");
+                    return false;
+                }
+            } catch (Throwable $exception) {
+                return Redirect::to(url("/stbiodata"))
+                                ->with("actionError", "Terjadi kesalahan !");
+            }
+            $this->model["admStudent"]   =   AdmStudent::find(session()->get('admStudent')->id); 
+            return view("applicationst.biodata", $this->model);
         }
 }

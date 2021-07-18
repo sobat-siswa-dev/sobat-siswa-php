@@ -1,5 +1,6 @@
 
 <link href="{{ asset('distRes/libs/jqvmap/dist/jqvmap.min.css') }}" rel="stylesheet" />
+<link href="{{ asset('distRes/libs/select2/dist/css/select2.css') }}" rel="stylesheet" />
 <link href="{{ asset('distRes/css/tabler.min.css') }}" rel="stylesheet" />
 <link href="{{ asset('distRes/css/tabler-flags.min.css') }}" rel="stylesheet" />
 <link href="{{ asset('distRes/css/tabler-payments.min.css') }}" rel="stylesheet" />
@@ -17,6 +18,23 @@
         background-image: url("{{ asset('staticRes/edu.png') }}");
         background-size: 75em;
     }
+
+    .navbar-overlap:after {
+        background-image: url("{{ asset('staticRes/edu-2.png') }}");
+        background-color: #3955a4;
+        background-position: center;
+        background-size: cover;
+    }
+
+    @media (min-width: 768px) {
+        .navbar-dark {
+            background-color: transparent;
+        }
+        .navbar-overlap:after {
+            top: 0;
+            height: 12rem;
+        }
+    }
     
     @media (max-width: 768px) {
         .navbar .navbar-nav .nav-link {
@@ -25,5 +43,18 @@
         .table.card-table {
             white-space: nowrap;
         }
+        .navbar-overlap:after {
+            background-size: contain;
+            background-position: top right;
+        }
+    }
+
+    .card-icon {
+        width: 30px;
+        height: 30px;
+        display: inline-block;
+        color: #656d77 !important;
+        border: 1px solid #ddd;
+        box-sizing: border-box;
     }
 </style>

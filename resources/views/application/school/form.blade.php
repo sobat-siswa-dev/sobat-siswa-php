@@ -16,7 +16,7 @@
                     </div>
                 </div>
             </div>
-            <form method="POST" action="">
+            <form method="POST" enctype="multipart/form-data" action="">
                 {{ csrf_field() }}
                 <div class="row row-deck row-cards">
                     <div class="col-12 d-block">
@@ -51,6 +51,14 @@
                                         Alamat <sup class="font-bold text-red">*</sup>
                                     </label>
                                     <textarea name="address" required="" class="form-control" maxlength="255" name="address">{{ $admSchool->address }}</textarea>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="form-label">
+                                        {{ $admSchool->logo ? "Ganti" : "" }} Logo
+                                    </label>
+                                    <div class="form-control">
+                                        <input type="file" accept="image/*" name="attch">
+                                    </div>
                                 </div>
                             </div>
                         </div>
