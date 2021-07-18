@@ -57,4 +57,8 @@
         border: 1px solid #ddd;
         box-sizing: border-box;
     }
+
+    .text-black {
+        color: rgb(35, 46, 60);
+    }
 </style>

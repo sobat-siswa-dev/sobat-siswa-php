@@ -50,6 +50,33 @@
         </div>
     </div>
 </li>
+<li class="nav-item dropdown" data-menu-parent="learning">
+    <a class="nav-link dropdown-toggle" href="#navbar-base" data-toggle="dropdown"
+        role="button" aria-expanded="false">
+        <span class="nav-link-icon d-md-none d-lg-inline-block">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
+                viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <rect x="4" y="4" width="6" height="5" rx="2" />
+                <rect x="4" y="13" width="6" height="7" rx="2" />
+                <rect x="14" y="4" width="6" height="7" rx="2" />
+                <rect x="14" y="15" width="6" height="5" rx="2" /></svg>
+        </span>
+        <span class="nav-link-title">
+            Informasi dan KBM
+        </span>
+    </a>
+    <div class="dropdown-menu">
+        <div class="dropdown-menu-columns">
+            <div class="dropdown-menu-column">
+                <a class="dropdown-item" href="{{ url('stlearning/announcement') }}">
+                    Pengumuman
+                </a>
+            </div>
+        </div>
+    </div>
+</li>
 <li class="nav-item">
     <a class="nav-link" href="./index.html">
         <span class="nav-link-icon d-md-none d-lg-inline-block">

@@ -14,7 +14,8 @@ use App\Models\{
     AdmStudent,
     AdmTeacher,
     BehTrophy,
-    BehViolation
+    BehViolation,
+    KbmAnnouncement
 };
 
 class GlobalController extends Controller
@@ -37,6 +38,7 @@ class GlobalController extends Controller
             $this->model["admStudentAlumnCount"] = AdmStudent::where("school_id", session()->get("admSchool")->id)
                                                             ->where("is_active", 2)
                                                             ->count();
+            $this->model['kbmAnnouncementRecent'] =   KbmAnnouncement::where("school_id", session()->get("admSchool")->id)->orderBy("id", "DESC")->limit(3)->get();
             $this->model["behViolationRecent"] = DB::select(QueryUtility::queryRecentViolation(session()->get("admSchool")->id));
             $this->model["behTrophyRecent"] = DB::select(QueryUtility::queryRecentTrophy(session()->get("admSchool")->id));
             return view("application.dashboard", $this->model);

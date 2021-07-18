@@ -12,7 +12,8 @@ use App\Models\{
     BehViolation,
     BehCounseling,
     AdmSchool,
-    AdmStudent
+    AdmStudent,
+    KbmAnnouncement
 };
 
 class StGlobalController extends Controller
@@ -28,6 +29,8 @@ class StGlobalController extends Controller
             $this->model["behViolationRecent"]   =   BehViolation::where("student_id", session()->get("admStudent")->id)
                                                         ->where("class_id", session()->get("admStudent")->class_id)
                                                         ->orderBy("get_at", "DESC")->limit(3)->get();
+            $this->model['kbmAnnouncementRecent'] =   KbmAnnouncement::where("school_id", session()->get("admSchool")->id)
+                                                            ->orderBy("id", "DESC")->limit(3)->get();
             $this->model["admSchool"]   =   AdmSchool::find(session()->get('admSchool')->id); 
             return view("applicationst.dashboard", $this->model);
         }

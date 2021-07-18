@@ -10,9 +10,10 @@ use App\Http\Controllers\{
 use App\Http\Controllers\Application\{
     StGlobalController,
     StAttitudeController,
-
+    StLearningController,
     GlobalController,
     MasterController,
+    LearningController,
     AttitudeController
 };
 
@@ -49,6 +50,10 @@ Route::middleware("auth.custom")->group(function () {
         Route::any("/studentSelector", [AttitudeController::class, 'studentSelectorPage']);
         Route::any("/violationStatistic", [AttitudeController::class, 'violationStatisticPage']);
     });
+    Route::prefix("/learning")->group(function () {
+        Route::any("/announcement", [LearningController::class, 'announcementPage']);
+        Route::any("/announcement/{id}", [LearningController::class, 'announcementDetailPage']);
+    });
 });
 
 Route::middleware("auth.student.custom")->group(function () {
@@ -62,6 +67,10 @@ Route::middleware("auth.student.custom")->group(function () {
         Route::any("/trophy", [StAttitudeController::class, 'stTrophyPage']);
         Route::any("/violation", [StAttitudeController::class, 'stViolationPage']);
         Route::any("/counseling", [StAttitudeController::class, 'stCounselingPage']);
+    });
+    Route::prefix("/stlearning")->group(function () {
+        Route::any("/announcement", [StLearningController::class, 'stAnnouncementPage']);
+        Route::any("/announcement/{id}", [StLearningController::class, 'stAnnouncementDetailPage']);
     });
 });
 

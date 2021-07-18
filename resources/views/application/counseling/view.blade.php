@@ -106,18 +106,18 @@
                                                 </p>
                                             </td>
                                             <td>
-                                                <form method="POST" action="">
+                                                @if ($behCounseling->attch)
+                                                    <a style="text-decoration: none;" href="{{ asset($behCounseling->attch) }}" download>
+                                                        <button type="button" class="btn-table btn btn-sm btn-default">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon m-0" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" /><polyline points="7 11 12 16 17 11" /><line x1="12" y1="4" x2="12" y2="16" /></svg>
+                                                            &nbsp;Lampiran
+                                                        </button>
+                                                    </a>
+                                                    &nbsp;
+                                                @endif
+                                                <form method="POST" action="" class="d-inline-block">
                                                     {{ csrf_field() }}
                                                     <input type="hidden" name="id" value="{{ $behCounseling->id }}"/>
-                                                    @if ($behCounseling->attch)
-                                                        <a style="text-decoration: none;" href="{{ asset($behCounseling->attch) }}" download>
-                                                            <button type="button" class="btn-table btn btn-sm btn-default">
-                                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon m-0" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" /><polyline points="7 11 12 16 17 11" /><line x1="12" y1="4" x2="12" y2="16" /></svg>
-                                                                &nbsp;Lampiran
-                                                            </button>
-                                                        </a>
-                                                        &nbsp;
-                                                    @endif
                                                     <button name="submit-form" class="btn-table btn btn-sm btn-default">
                                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon m-0" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 20h4l10.5 -10.5a1.5 1.5 0 0 0 -4 -4l-10.5 10.5v4" /><line x1="13.5" y1="6.5" x2="17.5" y2="10.5" /></svg>
                                                     </button>  

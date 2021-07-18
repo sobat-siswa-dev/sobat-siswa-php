@@ -64,6 +64,9 @@ class AttitudeController extends Controller
     // Counseling Detail Page
         public function counselingDetailPage (Request $request, $id)
         {
+            if (!AdmStudent::validateSchool($id, session()->get("admSchool")->id)) {
+                return Redirect::to(url("/attitude/counseling"));
+            } 
             try {
                 if ($request->has("submit-form")) {
                     $this->model["behCounseling"] = $request->has("id") ? BehCounseling::find($request->get("id")) : new BehCounseling();
@@ -112,6 +115,9 @@ class AttitudeController extends Controller
     // Violation Detail Page
         public function violationDetailPage (Request $request, $id)
         {
+            if (!AdmStudent::validateSchool($id, session()->get("admSchool")->id)) {
+                return Redirect::to(url("/attitude/violation"));
+            } 
             try {
                 if ($request->has("submit-form")) {
                     $this->model["admRuleList"] = AdmRule::where("school_id", session()->get("admSchool")->id)
@@ -174,6 +180,9 @@ class AttitudeController extends Controller
     // Trophy Detail Page
         public function trophyDetailPage (Request $request, $id)
         {
+            if (!AdmStudent::validateSchool($id, session()->get("admSchool")->id)) {
+                return Redirect::to(url("/attitude/trophy"));
+            } 
             try {
                 if ($request->has("submit-form")) {
                     $this->model["behTrophy"] = $request->has("id") ? BehTrophy::find($request->get("id")) : new BehTrophy();

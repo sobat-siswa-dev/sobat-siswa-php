@@ -33,4 +33,8 @@ class AdmStudent extends Model
         }
         return $returnCount;
     }
+
+    public static function validateSchool ($id, $school_id) {
+        return AdmStudent::where("id", $id)->where("school_id", $school_id)->count();
+    }
 }

@@ -32,7 +32,7 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-4">
-                                        <div class="form-group mb-3 mb-md-2">
+                                        <div class="form-group mb-3">
                                             <label class="form-label">
                                                 Nomor Induk Siswa
                                             </label>
@@ -40,7 +40,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-8">
-                                        <div class="form-group mb-3 mb-md-2">
+                                        <div class="form-group mb-3">
                                             <label class="form-label">
                                                 Nama
                                             </label>
@@ -174,10 +174,21 @@
                             </button>  
                         </a>
                     </div>
-                    <div class="col-6">
-                        <button name="submit-save" class="btn btn-md btn-primary ml-auto">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><line x1="10" y1="14" x2="21" y2="3" /><path d="M21 3l-6.5 18a0.55 .55 0 0 1 -1 0l-3.5 -7l-7 -3.5a0.55 .55 0 0 1 0 -1l18 -6.5" /></svg> Simpan
+                    <div class="col-6 col-edit">
+                        <button type="button" class="btn btn-md btn-primary ml-auto" onclick="changeEditStat()">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 20h4l10.5 -10.5a1.5 1.5 0 0 0 -4 -4l-10.5 10.5v4" /><line x1="13.5" y1="6.5" x2="17.5" y2="10.5" /></svg> Ubah
                         </button>  
+                    </div>
+                    <div class="col-6 col-submit d-none">
+                        <div class="ml-auto">
+                            <button type="button" class="btn btn-md btn-default" onclick="changeEditStat()">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><rect x="4" y="4" width="16" height="16" rx="2" /><path d="M10 10l4 4m0 -4l-4 4" /></svg> Batal
+                            </button>
+                            &nbsp;
+                            <button name="submit-save" class="btn btn-md btn-primary">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><line x1="10" y1="14" x2="21" y2="3" /><path d="M21 3l-6.5 18a0.55 .55 0 0 1 -1 0l-3.5 -7l-7 -3.5a0.55 .55 0 0 1 0 -1l18 -6.5" /></svg> Simpan
+                            </button>  
+                        </div>
                     </div>
                 </div>
             </form>
@@ -186,5 +197,28 @@
     </div>
     <script>
         $('[name="class_id"]').val('{{ $admStudent->class_id }}');
+
+        let editStat = false;
+
+        function changeEditStat () {
+            $('.col-edit').removeClass("d-none");
+            $('.col-submit').removeClass("d-none");
+            if (editStat) {
+                $('input').removeAttr("disabled");
+                $('textarea').removeAttr("disabled");
+                $('select').removeAttr("disabled");
+                $('sup.text-red').show();
+                $('.col-edit').addClass("d-none");
+            } else {
+                $('input').attr("disabled", true);
+                $('textarea').attr("disabled", true);
+                $('select').attr("disabled", true);
+                $('sup.text-red').hide();
+                $('.col-submit').addClass("d-none");
+            }
+            editStat = !editStat;
+        }
+
+        changeEditStat();
     </script>
 @stop

@@ -66,7 +66,7 @@
                 </div>
             </div>
             <div class="text-center text-muted mt-3">
-                <b>Sobat Siswa</b> . v2.0.0
+                <b>Sobat Siswa</b> . v1.0.0.a
             </div>
         </form>
     </div>

@@ -57,6 +57,7 @@ class QueryUtility
                 bv.description,
                 bv.poin,
                 ac.school_id,
+                bv.student_id,
                 bv.created_at
             from
                 beh_violation bv
@@ -80,6 +81,7 @@ class QueryUtility
                 bt.name as description,
                 bt.level,
                 ast.school_id,
+                bt.student_id,
                 bt.created_at 
             from
                 beh_trophy bt

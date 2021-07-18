@@ -104,21 +104,39 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td colspan="3">
-                                            <div class="my-3 mt-2">
-                                                <img class="d-block m-auto" style="width: 200px; max-width: 100%;" src="{{ asset('./staticRes/empty.png') }}" alt="">
-                                                <h3 class="text-center" style="color: #2e576d; font-weight: bolder;">
-                                                    Tidak ada data
-                                                </h3>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                    @foreach ($kbmAnnouncementRecent as $recent)
+                                        <tr>
+                                            <td class="text-nowrap">
+                                                <a href="{{ url('/learning/announcement/' . $recent->id) }}" class="text-muted">
+                                                    <small>
+                                                        {{ date("d F Y", strtotime($recent->created_at)) }}
+                                                    </small>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a href="{{ url('/learning/announcement/' . $recent->id) }}" class="text-black">
+                                                    {{ $recent->title }}
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                    @if (count($kbmAnnouncementRecent) == 0)
+                                        <tr>
+                                            <td colspan="3">
+                                                <div class="my-3 mt-2">
+                                                    <img class="d-block m-auto" style="width: 200px; max-width: 100%;" src="{{ asset('./staticRes/empty.png') }}" alt="">
+                                                    <h3 class="text-center" style="color: #2e576d; font-weight: bolder;">
+                                                        Tidak ada data
+                                                    </h3>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    @endif
                                 </tbody>
                             </table>
                         </div>
                         <div class="card-footer">
-                            <a href="#"><small>Lihat Semuanya</small></a>
+                            <a href="{{ url('/learning/announcement') }}"><small>Lihat Semuanya</small></a>
                         </div>
                     </div>
                 </div>
@@ -150,19 +168,25 @@
                                 <tbody>
                                     @foreach ($behViolationRecent as $recent)
                                         <tr>
-                                            <td class="text-nowrap text-muted">
-                                                <small>
-                                                    {{ date("d F Y", strtotime($recent->created_at)) }}
-                                                </small>
+                                            <td class="text-nowrap">
+                                                <a href="{{ url('/attitude/violation/' . $recent->student_id) }}" class="text-muted">
+                                                    <small>
+                                                        {{ date("d F Y", strtotime($recent->created_at)) }}
+                                                    </small>
+                                                </a>
                                             </td>
                                             <td>
-                                                {{ $recent->name }}
+                                                <a href="{{ url('/attitude/violation/' . $recent->student_id) }}" class="text-black">
+                                                    {{ $recent->name }}
+                                                </a>
                                             </td>
                                             <td>
-                                                {{ $recent->description }}
-                                                <small class="d-block">
-                                                    {{ $recent->poin + 0 }} Poin
-                                                </small>
+                                                <a href="{{ url('/attitude/violation/' . $recent->student_id) }}" class="text-black">
+                                                    {{ $recent->description }}
+                                                    <small class="d-block">
+                                                        {{ $recent->poin + 0 }} Poin
+                                                    </small>
+                                                </a>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -214,19 +238,25 @@
                                 <tbody>
                                     @foreach ($behTrophyRecent as $recent)
                                         <tr>
-                                            <td class="text-nowrap text-muted">
-                                                <small>
-                                                    {{ date("d F Y", strtotime($recent->created_at)) }}
-                                                </small>
+                                            <td class="text-nowrap">
+                                                <a href="{{ url('/attitude/trophy/' . $recent->student_id) }}" class="text-muted">
+                                                    <small>
+                                                        {{ date("d F Y", strtotime($recent->created_at)) }}
+                                                    </small>
+                                                </a>
                                             </td>
                                             <td>
-                                                {{ $recent->name }}
+                                                <a href="{{ url('/attitude/trophy/' . $recent->student_id) }}" class="text-black">
+                                                    {{ $recent->name }}
+                                                </a>
                                             </td>
                                             <td>
-                                                {{ $recent->description }}
-                                                <small class="d-block">
-                                                    {{ $recent->level }}
-                                                </small>
+                                                <a href="{{ url('/attitude/trophy/' . $recent->student_id) }}" class="text-black">
+                                                    {{ $recent->description }}
+                                                    <small class="d-block">
+                                                        {{ $recent->level }}
+                                                    </small>
+                                                </a>
                                             </td>
                                         </tr>
                                     @endforeach

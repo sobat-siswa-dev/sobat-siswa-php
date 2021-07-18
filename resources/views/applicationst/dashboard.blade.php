@@ -40,21 +40,39 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td colspan="3">
-                                            <div class="my-3 mt-2">
-                                                <img class="d-block m-auto" style="width: 200px; max-width: 100%;" src="{{ asset('./staticRes/empty.png') }}" alt="">
-                                                <h3 class="text-center" style="color: #2e576d; font-weight: bolder;">
-                                                    Tidak ada data
-                                                </h3>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                    @foreach ($kbmAnnouncementRecent as $recent)
+                                        <tr>
+                                            <td class="text-nowrap">
+                                                <a href="{{ url('/stlearning/announcement/' . $recent->id) }}" class="text-muted">
+                                                    <small>
+                                                        {{ date("d F Y", strtotime($recent->created_at)) }}
+                                                    </small>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a href="{{ url('/stlearning/announcement/' . $recent->id) }}" class="text-black">
+                                                    {{ $recent->title }}
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                    @if (count($kbmAnnouncementRecent) == 0)
+                                        <tr>
+                                            <td colspan="3">
+                                                <div class="my-3 mt-2">
+                                                    <img class="d-block m-auto" style="width: 200px; max-width: 100%;" src="{{ asset('./staticRes/empty.png') }}" alt="">
+                                                    <h3 class="text-center" style="color: #2e576d; font-weight: bolder;">
+                                                        Tidak ada data
+                                                    </h3>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    @endif
                                 </tbody>
                             </table>
                         </div>
                         <div class="card-footer">
-                            <a href="#"><small>Lihat Semuanya</small></a>
+                            <a href="{{ url('/stlearning/announcement/') }}"><small>Lihat Semuanya</small></a>
                         </div>
                     </div>
                 </div>

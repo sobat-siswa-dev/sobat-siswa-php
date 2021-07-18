@@ -91,7 +91,7 @@
         </div>
     </div>
 </li>
-<li class="nav-item dropdown">
+<li class="nav-item dropdown" data-menu-parent="learning">
     <a class="nav-link dropdown-toggle" href="#navbar-base" data-toggle="dropdown"
         role="button" aria-expanded="false">
         <span class="nav-link-icon d-md-none d-lg-inline-block">
@@ -111,15 +111,15 @@
     <div class="dropdown-menu">
         <div class="dropdown-menu-columns">
             <div class="dropdown-menu-column">
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="{{ url('learning/announcement') }}">
+                    Pengumuman
+                </a>
+                <!-- <a class="dropdown-item" href="#">
                     Raport
                 </a>
                 <a class="dropdown-item" href="#">
-                    Pengumuman
-                </a>
-                <a class="dropdown-item" href="#">
                     Majalah Dinding
-                </a>
+                </a> -->
             </div>
         </div>
     </div>
