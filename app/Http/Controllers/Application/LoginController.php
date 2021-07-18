@@ -1,9 +1,17 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Application;
+
+use App\Http\Controllers\{
+    Controller,
+    Utility,
+    QueryUtility
+};
 
 use Illuminate\Http\Request;
+
 use Hash, Redirect;
+
 use App\Models\{
     AdmSchool,
     AdmTeacher,

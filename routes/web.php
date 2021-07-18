@@ -2,12 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\{
-    RegistrationController,
-    LoginController
-};
-
 use App\Http\Controllers\Application\{
+    RegistrationController,
+    LoginController,
     StGlobalController,
     StAttitudeController,
     StLearningController,
