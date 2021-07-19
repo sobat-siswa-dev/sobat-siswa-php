@@ -17,6 +17,7 @@ class CreateAdmToken extends Migration
             $table->id();
             $table->integer('student_id')->nullable();
             $table->integer('teacher_id')->nullable();
+            $table->integer('school_id')->nullable();
             $table->string('token')->nullable();
             $table->datetime('expired_at');
             $table->timestamps();

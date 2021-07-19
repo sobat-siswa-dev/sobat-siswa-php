@@ -4,7 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Rest\{
-    LoginController
+    LoginController,
+    StAttitudeController
 };
 
 /*
@@ -18,14 +19,23 @@ use App\Http\Controllers\Rest\{
 |
 */
 
-Route::prefix("/auth")->group(function () {
-    Route::post("/login", [LoginController::class, 'loginEp']);
-    Route::post("/refreshToken", [LoginController::class, 'refreshTokenEp']);
-});
-
-
-Route::middleware("rest")->group(function () {
-    Route::prefix("/auth")->group(function () {
-        Route::post("/profile", [LoginController::class, 'profileEp']);
+Route::prefix("/student")->group(function (){
+    Route::post("/login", [LoginController::class, 'loginStudentEp']);
+    Route::middleware("rest.student")->group(function () {
+        Route::post("/profile", [LoginController::class, 'profileStudentEp']);
+        Route::prefix("/attitude")->group(function () {
+            Route::get("/trophy", [StAttitudeController::class, 'trophyStudentEd']);
+            Route::get("/violation", [StAttitudeController::class, 'violationStudentEd']);
+            Route::get("/counseling", [StAttitudeController::class, 'counselingStudentEd']);
+        });
     });
 });
+
+Route::prefix("/teacher")->group(function (){
+    Route::post("/login", [LoginController::class, 'loginTeacherEp']);
+    Route::middleware("rest.teacher")->group(function () {
+        Route::post("/profile", [LoginController::class, 'profileTeacherEp']);
+    });
+});
+
+Route::post("/refreshToken", [LoginController::class, 'refreshTokenEp']);

@@ -2,14 +2,10 @@
 
 namespace App\Http\Middleware;
 
-use Closure;
+use Closure, Redirect;
 use Illuminate\Http\Request;
 
-use App\Models\AdmToken;
-
-use App\Http\Controllers\Utility;
-
-class RestMiddleware
+class AuthTeacherMiddleware
 {
     /**
      * Handle an incoming request.
@@ -20,11 +16,10 @@ class RestMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        $admToken = AdmToken::where("token", $request->header ('Authorization'))->where("expired_at", ">=", date("Y-m-d H:i:s"))->first();
-        if ($admToken) {
+        if (session()->get("loginToken")) {
             return $next($request);
         } else {
-            return Utility::createResponse(401, null);
+            return Redirect::to(url("/login"))->with("actionError", "Anda tidak dapat mengakses sebelum masuk.");
         }
     }
 }

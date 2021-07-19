@@ -17,7 +17,7 @@ toastr.options = {
 };
 
 $('[data-btn-function="export"]').remove();
-$("body").fadeIn(1000);
+$("body").fadeIn(750);
 $(".table-responsive table tr td").each(function () {
     if ($(this).html().trim() == '') {$(this).html('-')}
 });

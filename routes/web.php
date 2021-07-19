@@ -25,7 +25,7 @@ use App\Http\Controllers\Application\{
 |
 */
 
-Route::middleware("auth.custom")->group(function () {
+Route::middleware("auth.teacher")->group(function () {
     Route::get("/dashboard", [GlobalController::class, 'dashboardPage']);
     Route::any("/changePassword", [GlobalController::class, 'changePasswordPage']);
     Route::prefix("/master")->group(function () {
@@ -53,7 +53,7 @@ Route::middleware("auth.custom")->group(function () {
     });
 });
 
-Route::middleware("auth.student.custom")->group(function () {
+Route::middleware("auth.student")->group(function () {
     Route::get("/stdashboard", [StGlobalController::class, 'stdashboardPage']);
     Route::any("/stchangePassword", [StGlobalController::class, 'stChangePasswordPage']);
     Route::any("/stbiodata", [StGlobalController::class, 'stBiodataPage']);
