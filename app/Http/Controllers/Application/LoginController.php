@@ -31,6 +31,7 @@ class LoginController extends Controller
                 if ($admSchool) {
                     $admStudent = AdmStudent::where("nis", $request->get("student_nis"))
                                             ->where("school_id", $admSchool->id)
+                                            ->where("is_active", "1")
                                             ->first();
                     if ($admStudent) {
                         if (Hash::check($request->get("student_password"), $admStudent->password)) {
@@ -59,6 +60,7 @@ class LoginController extends Controller
                 if ($admSchool) {
                     $admTeacher = AdmTeacher::where("email", $request->get("teacher_email"))
                                             ->where("school_id", $admSchool->id)
+                                            ->where("is_active", "1")
                                             ->first();
                     if ($admTeacher) {
                         if (Hash::check($request->get("teacher_password"), $admTeacher->password)) {

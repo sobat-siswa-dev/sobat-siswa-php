@@ -16,6 +16,11 @@ class AdmStudent extends Model
         return AdmClass::find($this->class_id);
     }
     
+    public function admSchool ()
+    {
+        return AdmSchool::find($this->school_id);
+    }
+    
     public function admAlumn ()
     {
         return AdmAlumn::find($this->alumn_id);

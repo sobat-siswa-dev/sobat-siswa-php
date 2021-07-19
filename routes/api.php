@@ -19,5 +19,13 @@ use App\Http\Controllers\Rest\{
 */
 
 Route::prefix("/auth")->group(function () {
-    Route::post("/student", [LoginController::class, 'studentAuth']);
+    Route::post("/login", [LoginController::class, 'loginEp']);
+    Route::post("/refreshToken", [LoginController::class, 'refreshTokenEp']);
+});
+
+
+Route::middleware("rest")->group(function () {
+    Route::prefix("/auth")->group(function () {
+        Route::post("/profile", [LoginController::class, 'profileEp']);
+    });
 });

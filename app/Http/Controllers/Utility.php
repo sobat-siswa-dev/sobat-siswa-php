@@ -22,7 +22,7 @@ class Utility
             default:
                 break;
         }
-        return $response;
+        return response($response);
     }
 
     public static function createSlug ($str, $delimiter = '-') 
