@@ -24,15 +24,9 @@
                                 <thead>
                                     <tr>
                                         <th>
-                                            Tanggal
+                                            Informasi
                                         </th>
-                                        <th>
-                                            Judul
-                                        </th>
-                                        <th>
-                                            Penulis
-                                        </th>
-                                        <th>
+                                        <th class="w-1">
                                             
                                         </th>
                                     </tr>
@@ -41,13 +35,12 @@
                                     @foreach ($kbmAnnouncementList as $kbmAnnouncement)
                                         <tr>
                                             <td>
-                                                {{ date("d F Y, H:i", strtotime($kbmAnnouncement->created_at)) }}
-                                            </td>
-                                            <td>
-                                                {{ $kbmAnnouncement->title }}
-                                            </td>
-                                            <td>
-                                                {{ $kbmAnnouncement->created_by }}
+                                                <a href="{{ url('stlearning/announcement/' . $kbmAnnouncement->id) }}" style="text-decoration: none; color: rgb(35, 46, 60);">
+                                                    {{ $kbmAnnouncement->title }}
+                                                    <small class="d-block text-muted mt-1">
+                                                        {{ date("d F Y, H:i", strtotime($kbmAnnouncement->created_at)) }} Oleh <span class="text-primary" style="font-weight: 600">{{ $kbmAnnouncement->created_by }}</span>
+                                                    </small>
+                                                </a>
                                             </td>
                                             <td>
                                                 <a href="{{ url('stlearning/announcement/' . $kbmAnnouncement->id) }}" style="text-decoration: none;">

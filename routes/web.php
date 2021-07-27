@@ -79,6 +79,10 @@ Route::prefix("/registration")->group(function () {
     Route::any("/finish", [RegistrationController::class, 'finishPage'])->middleware("registration");
 });
 
+Route::get("/api/swagger-ui", function () {
+    return view("swagger-ui");
+});
+
 Route::any("/", function () {
     return redirect(url('/login-student'));
 });
