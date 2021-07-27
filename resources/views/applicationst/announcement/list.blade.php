@@ -20,7 +20,7 @@
                 <div class="col-12 d-block">
                     <div class="card">
                         <div class="table-responsive">
-                            <table class="table card-table table-vcenter">
+                            <table class="table table-wrap-cus card-table table-vcenter">
                                 <thead>
                                     <tr>
                                         <th>

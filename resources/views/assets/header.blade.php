@@ -26,10 +26,15 @@
         background-size: cover;
     }
 
+    .table-wrap-cus .btn-table {
+        margin-right: 10px;
+    }
+
     @media (min-width: 768px) {
         .navbar-dark {
             background-color: transparent;
         }
+
         .navbar-overlap:after {
             top: 0;
             height: 12rem;
@@ -40,12 +45,25 @@
         .navbar .navbar-nav .nav-link {
             justify-content: start;
         }
+
         .table.card-table {
             white-space: nowrap;
         }
+
         .navbar-overlap:after {
             background-size: contain;
             background-position: top right;
+        }
+
+        .table-wrap-cus * {
+            white-space: normal;
+        }
+
+        .table-wrap-cus .btn-table {
+            margin-right: 0px;
+            margin-bottom: 10px;
+            margin-top: 0px;
+            display: block;
         }
     }
 
