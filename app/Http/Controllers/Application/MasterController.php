@@ -277,6 +277,7 @@ class MasterController extends Controller
                     $admClass = $request->has("id") ? AdmClass::find($request->get("id")) : new AdmClass();
                     $admClass->name = $request->get("name");
                     $admClass->code = $request->get("code");
+                    $admClass->level = $request->get("level");
                     $admClass->group_id = $request->get("group_id");
                     $admClass->school_id = session()->get("admSchool")->id;
                     $admClass->is_active = 1;

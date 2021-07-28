@@ -45,6 +45,9 @@
                                             Grup Kelas / Jurusan
                                         </th>
                                         <th>
+                                            Tingkat
+                                        </th>
+                                        <th>
                                             Jumlah Siswa
                                         </th>
                                         <th width="35%">
@@ -65,6 +68,9 @@
                                                 @if ($admClass->admClassGroup())
                                                     {{ $admClass->admClassGroup()->name }}
                                                 @endif
+                                            </td>
+                                            <td>
+                                                Tingkat {{ $admClass->level }}
                                             </td>
                                             <td>
                                                 {{ $admClass->admStudentCount() }} Siswa

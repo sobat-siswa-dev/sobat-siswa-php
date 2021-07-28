@@ -79,7 +79,7 @@ class LoginController extends Controller
     // Refresh Token Ep
         public function refreshTokenEp (Request $request)
         {
-            $admToken = AdmToken::where("token", $request->header ('Authorization'))->first();
+            $admToken = AdmToken::where("token", $request->header('Authorization'))->first();
             $admToken->expired_at = date("Y-m-d H:i:s", strtotime(date("Y-m-d H:i:s", strtotime(date("Y-m-d H:i:s"))) . " +1 day"));
             $admToken->save();
             return Utility::createResponse(200, "Token has been refresh");

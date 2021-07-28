@@ -15,9 +15,45 @@
       "http"
     ],
     "paths": {
+        "/api/refreshToken" : {
+            "post" : {
+                "tags" : ["Authentikasi"],
+                "summary" : "Memperbarui durasi token",
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "result": {
+                                            "type": "string"
+                                        },
+                                        "status": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "null"
+                                        }
+                                    },
+                                    "example": {
+                                        "result": "200",
+                                        "status": "success",
+                                        "message": null
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [{
+                    "Authorization" : []
+                }]
+            }
+        },
         "/api/student/login" : {
             "post" : {
-                "tags" : ["Student Endpoint"],
+                "tags" : ["Authentikasi"],
                 "summary" : "Mendapatkan token akses siswa",
                 "requestBody": {
                     "content": {
@@ -69,7 +105,7 @@
         },
         "/api/student/attitude/trophy" : {
             "get" : {
-                "tags" : ["Student Endpoint"],
+                "tags" : ["Profile Siswa"],
                 "summary" : "Mendapatkan data prestasi siswa",
                 "responses": {
                     "200": {
@@ -105,7 +141,7 @@
         },
         "/api/student/attitude/violation" : {
             "get" : {
-                "tags" : ["Student Endpoint"],
+                "tags" : ["Profile Siswa"],
                 "summary" : "Mendapatkan data pelanggaran tata tertib siswa",
                 "responses": {
                     "200": {
@@ -141,7 +177,7 @@
         },
         "/api/student/attitude/counseling" : {
             "get" : {
-                "tags" : ["Student Endpoint"],
+                "tags" : ["Profile Siswa"],
                 "summary" : "Mendapatkan data konseling siswa",
                 "responses": {
                     "200": {

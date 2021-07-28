@@ -21,6 +21,7 @@ class CreateAdmClassTable extends Migration
             $table->timestamps();
             $table->string('code')->nullable();
             $table->integer('group_id')->nullable();
+            $table->integer('level')->nullable();
         });
     }
 

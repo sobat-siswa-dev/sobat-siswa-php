@@ -37,6 +37,12 @@
                                     </label>
                                     <input name="code" required="" value="{{ $admClass->code }}" type="text" maxlength="100" class="form-control">
                                 </div>
+                                <div class="form-group mb-3">
+                                    <label class="form-label">
+                                        Tingkat <sup class="font-bold text-red">*</sup>
+                                    </label>
+                                    <input name="level" required="" value="{{ $admClass->level }}" type="num" min="1" class="form-control">
+                                </div>
                                 <div class="form-group">
                                     <label class="form-label">
                                         Grup Kelas / Jurusan

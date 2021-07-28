@@ -35,7 +35,7 @@
                                     <label class="form-label">
                                         Kelas Tujuan <sup class="font-bold text-red">*</sup>
                                     </label>
-                                    <select onchange="changeClassTo(this)" required="" class="form-control" name="class_to">
+                                    <select onchange="changeClassTo(this)" required="" class="form-control select-search" name="class_to">
                                         <option value="">
                                             Pilih Kelas
                                         </option>
@@ -55,7 +55,7 @@
                                     <label class="form-label">
                                         Angkatan Alumni <sup class="font-bold text-red">*</sup>
                                     </label>
-                                    <select onchange="changeAlumn(this)" name="alumn_id" class="form-control">
+                                    <select onchange="changeAlumn(this)" name="alumn_id" class="form-control select-search">
                                         <option value="">
                                             Pilih Angkatan Alumni
                                         </option>
