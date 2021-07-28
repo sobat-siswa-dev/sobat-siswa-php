@@ -48,7 +48,7 @@
                                                     </small>
                                                 </a>
                                             </td>
-                                            <td>
+                                            <td class="text-right">
                                                 <form method="POST" action="" class="d-inline-block">
                                                     {{ csrf_field() }}
                                                     <input type="hidden" name="id" value="{{ $kbmAnnouncement->id }}"/>

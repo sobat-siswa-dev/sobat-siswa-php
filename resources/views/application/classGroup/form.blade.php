@@ -1,5 +1,5 @@
 @extends('layout.application')
-@section('title', 'Grup Kelas / Jurusan')
+@section('title', 'Jurusan')
 @section('menu-parent', 'master')
 @section('content')
     <div class="content">
@@ -11,7 +11,7 @@
                             Data Dasar
                         </div>
                         <h2 class="page-title">
-                            Form Grup Kelas / Jurusan
+                            Form Jurusan
                         </h2>
                     </div>
                 </div>

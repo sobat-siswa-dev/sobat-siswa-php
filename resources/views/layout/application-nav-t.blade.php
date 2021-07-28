@@ -30,8 +30,11 @@
                 <a class="dropdown-item" href="{{ url('master/school') }}">
                     Sekolah
                 </a>
+                <a class="dropdown-item" href="{{ url('master/teacher') }}">
+                    Guru
+                </a>
                 <a class="dropdown-item" href="{{ url('master/classGroup') }}">
-                    Grup Kelas / Jurusan
+                    Jurusan
                 </a>
                 <a class="dropdown-item" href="{{ url('master/class') }}">
                     Kelas
@@ -39,11 +42,11 @@
                 <a class="dropdown-item" href="{{ url('master/student') }}">
                     Siswa
                 </a>
-                <a class="dropdown-item" href="{{ url('master/teacher') }}">
-                    Guru
-                </a>
                 <a class="dropdown-item" href="{{ url('master/alumn') }}">
                     Alumni
+                </a>
+                <a class="dropdown-item" href="{{ url('master/subject') }}">
+                    Mata Pelajaran
                 </a>
                 <a class="dropdown-item" href="{{ url('master/rule') }}">
                     Tata Tertib

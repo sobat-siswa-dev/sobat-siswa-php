@@ -84,7 +84,7 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="form-label">
-                                                        Deskripsi Tambahan <span style="font-weight: normal">(Grup Kelas/Jurusan)</span>
+                                                        Deskripsi Tambahan <span style="font-weight: normal">(Jurusan)</span>
                                                     </label>
                                                     <input class="form-control mt-2" name="alumn_name" value="{{ $admClass->admClassGroup() ? $admClass->admClassGroup()->name : '' }}"/>
                                                 </div>

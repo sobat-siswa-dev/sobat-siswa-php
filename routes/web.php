@@ -31,6 +31,7 @@ Route::middleware("auth.teacher")->group(function () {
     Route::prefix("/master")->group(function () {
         Route::any("/class", [MasterController::class, 'classPage']);
         Route::any("/classGroup", [MasterController::class, 'classGroupPage']);
+        Route::any("/subject", [MasterController::class, 'subjectPage']);
         Route::any("/student", [MasterController::class, 'studentPage']);
         Route::any("/teacher", [MasterController::class, 'teacherPage']);
         Route::any("/alumn", [MasterController::class, 'alumnPage']);

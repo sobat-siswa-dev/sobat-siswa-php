@@ -1,12 +1,12 @@
 <table border="1">
     <thead>
         <tr>
-            <th style="border: 1px solid black; height: 25px;"><b>NIS</b></th>
-            <th style="border: 1px solid black; height: 25px;"><b>Nama</b></th>
-            <th style="border: 1px solid black; height: 25px;"><b>Kelas</b></th>
-            <th style="border: 1px solid black; height: 25px;"><b>L/P</b></th>
-            <th style="border: 1px solid black; height: 25px;"><b>Email</b></th>
-            <th style="border: 1px solid black; height: 25px;"><b>Telp</b></th>
+            <th style="border: 1px solid black;"><b>NIS</b></th>
+            <th style="border: 1px solid black;"><b>Nama</b></th>
+            <th style="border: 1px solid black;"><b>Kelas</b></th>
+            <th style="border: 1px solid black;"><b>L/P</b></th>
+            <th style="border: 1px solid black;"><b>Email</b></th>
+            <th style="border: 1px solid black;"><b>Telp</b></th>
         </tr>
     </thead>
     <tbody>

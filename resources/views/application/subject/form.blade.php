@@ -1,5 +1,5 @@
 @extends('layout.application')
-@section('title', 'Kelas')
+@section('title', 'Mata Pelajaran')
 @section('menu-parent', 'master')
 @section('content')
     <div class="content">
@@ -11,15 +11,15 @@
                             Data Dasar
                         </div>
                         <h2 class="page-title">
-                            Form Kelas
+                            Form Mata Pelajaran
                         </h2>
                     </div>
                 </div>
             </div>
             <form method="POST" action="">
                 {{ csrf_field() }}
-                @if ($admClass->id)
-                    <input type="hidden" name="id" value="{{ $admClass->id }}" />
+                @if ($admSubject->id)
+                    <input type="hidden" name="id" value="{{ $admSubject->id }}" />
                 @endif
                 <div class="row row-deck row-cards">
                     <div class="col-12 d-block">
@@ -29,19 +29,13 @@
                                     <label class="form-label">
                                         Nama <sup class="font-bold text-red">*</sup>
                                     </label>
-                                    <input name="name" required="" value="{{ $admClass->name }}" type="text" maxlength="100" class="form-control">
+                                    <input name="name" required="" value="{{ $admSubject->name }}" type="text" maxlength="100" class="form-control">
                                 </div>
                                 <div class="form-group mb-3">
                                     <label class="form-label">
-                                        Kode <sup class="font-bold text-red">*</sup>
+                                        Kode
                                     </label>
-                                    <input name="code" required="" value="{{ $admClass->code }}" type="text" maxlength="100" class="form-control">
-                                </div>
-                                <div class="form-group mb-3">
-                                    <label class="form-label">
-                                        Tingkat <sup class="font-bold text-red">*</sup>
-                                    </label>
-                                    <input name="level" required="" value="{{ $admClass->level }}" type="num" min="1" class="form-control">
+                                    <input name="code" value="{{ $admSubject->code }}" type="text" maxlength="100" class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label">
@@ -79,6 +73,6 @@
         @include("assets.copyright")
     </div>
     <script>
-        $('[name="group_id"]').val('{{ $admClass->group_id }}');
+        $('[name="group_id"]').val('{{ $admSubject->group_id }}');
     </script>
 @stop

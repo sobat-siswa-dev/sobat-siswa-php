@@ -20,6 +20,7 @@ use App\Models\{
     AdmStudent,
     AdmTeacher,
     AdmSchool,
+    AdmSubject,
     AdmAlumn
 };
 
@@ -228,6 +229,44 @@ class MasterController extends Controller
                                                                                 ->orWhere("phone", "LIKE", "%" . $request->get("keyword") . "%")
                                                                                 ->orWhere("email", "LIKE", "%" . $request->get("keyword") . "%");
             }
+        }
+
+    // Subject Page
+        public function subjectPage (Request $request)
+        {
+            try {
+                if ($request->has("submit-form")) {
+                    $this->model["admSubject"] = $request->has("id") ? AdmSubject::find($request->get("id")) : new AdmSubject();
+                    $this->model["admClassGroupList"] = AdmClassGroup::where("school_id", session()->get("admSchool")->id)
+                                                                    ->where("is_active", 1)
+                                                                    ->orderBy("name", "ASC")
+                                                                    ->get();
+                    return view("application.subject.form", $this->model);
+                } else if ($request->has("submit-save")) {
+                    $admSubject = $request->has("id") ? AdmSubject::find($request->get("id")) : new AdmSubject();
+                    $admSubject->name = $request->get("name");
+                    $admSubject->code = $request->get("code");
+                    $admSubject->group_id = $request->get("group_id");
+                    $admSubject->school_id = session()->get("admSchool")->id;
+                    $admSubject->is_active = 1;
+                    $admSubject->save();
+                    return Redirect::to(url("/master/subject"))
+                                    ->with("actionSuccess", "Sukses menyimpan data !");
+                } else if ($request->has("submit-delete")) {
+                    $admSubject = AdmSubject::find($request->get("id"));
+                    $admSubject->delete();
+                    return Redirect::to(url("/master/subject"))
+                                    ->with("actionSuccess", "Sukses menghapus data !");
+                }
+            } catch (Throwable $exception) {
+                return Redirect::to(url("/master/subject"))
+                                ->with("actionError", "Terjadi kesalahan !");
+            }
+            $this->model["admSubjectList"] = AdmSubject::where("school_id", session()->get("admSchool")->id)
+                                                            ->where("is_active", 1)
+                                                            ->orderBy("name", "ASC")
+                                                            ->paginate("10");
+            return view("application.subject.list", $this->model);
         }
 
     // Class Group Page
