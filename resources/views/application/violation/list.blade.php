@@ -95,7 +95,7 @@
             </tr>
         `);
         $.ajax({
-            url: "{{ url('attitude/studentSelector') }}",
+            url: "{{ url('master/studentSelector') }}",
             data: {
                 request_url: "{{ url('attitude/violation') }}/",
                 class_id: $('[name="class_id"]').val()

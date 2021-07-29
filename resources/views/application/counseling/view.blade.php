@@ -14,46 +14,18 @@
                             Bimbingan Konseling
                         </h2>
                     </div>
+                    <div class="col-auto ms-auto d-print-none">
+                        <a href=".">
+                            <button class="btn btn-default p-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon m-0" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 13l-4 -4l4 -4m-4 4h11a4 4 0 0 1 0 8h-1" /></svg>
+                            </button>
+                        </a>
+                    </div>
                 </div>
             </div>
             <div class="row row-deck row-cards">
                 <div class="col-md-4 d-block">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="form-group mb-3">
-                                <label class="form-label">
-                                    Nomor Induk
-                                </label>
-                                <div class="form-control">
-                                    {{ $admStudent->nis }}
-                                </div>
-                            </div>
-                            <div class="form-group mb-3">
-                                <label class="form-label">
-                                    Nama
-                                </label>
-                                <div class="form-control">
-                                    {{ $admStudent->name }}
-                                </div>
-                            </div>
-                            <div class="form-group mb-3">
-                                <label class="form-label">
-                                    Kelas
-                                </label>
-                                <div class="form-control">
-                                    {{ $admStudent->admClass()->name }}
-                                </div>
-                            </div>
-                            <div class="form-group mb-3">
-                                <label class="form-label">
-                                    Jumlah Konseling
-                                </label>
-                                <div class="form-control">
-                                    {{ count($behCounselingList) + 0 }} Kali
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @include("application.shortcut")
                 </div>
                 <div class="col-md-8 d-block">
                     <div class="card">
@@ -147,15 +119,21 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-6">
-                    <a href="{{ url('attitude/counseling') }}">
-                        <button type="button" class="btn btn-md btn-secondary mr-auto">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 13l-4 -4l4 -4m-4 4h11a4 4 0 0 1 0 8h-1" /></svg> Kembali
-                        </button>  
-                    </a>
-                </div>
             </div>
         </div>
         @include("assets.copyright")
     </div>
+    <script>
+        $('#shortcut-info').html(`
+            <div class="form-group mt-3 mb-0">
+                <label class="form-label">
+                    Jumlah Konseling
+                </label>
+                <div class="form-control">
+                    {{ count($behCounselingList) + 0 }} Kali
+                </div>
+            </div>
+        `);
+        $('[data-shortcut="counseling"]').addClass("active");
+    </script>
 @stop

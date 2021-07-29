@@ -1,5 +1,5 @@
 @extends('layout.application')
-@section('title', 'Mata Pelajaran')
+@section('title', 'Ekstrakurikuler')
 @section('menu-parent', 'master')
 @section('content')
     <div class="content">
@@ -11,7 +11,7 @@
                             Data Dasar
                         </div>
                         <h2 class="page-title">
-                            Mata Pelajaran
+                            Ekstrakurikuler
                         </h2>
                     </div>
                 </div>
@@ -50,23 +50,23 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($admSubjectList as $admSubject)
+                                    @foreach ($admSubjectExList as $admSubjectEx)
                                         <tr>
                                             <td class="text-muted">
-                                                {{ $admSubject->code }}
+                                                {{ $admSubjectEx->code }}
                                             </td>
                                             <td>
-                                                {{ $admSubject->name }}
+                                                {{ $admSubjectEx->name }}
                                             </td>
                                             <td>
-                                                @if ($admSubject->group_id)
-                                                    {{ $admSubject->admClassGroup()->name }}
+                                                @if ($admSubjectEx->group_id)
+                                                    {{ $admSubjectEx->admClassGroup()->name }}
                                                 @endif
                                             </td>
                                             <td>
                                                 <form method="POST" action="">
                                                     {{ csrf_field() }}
-                                                    <input type="hidden" name="id" value="{{ $admSubject->id }}"/>
+                                                    <input type="hidden" name="id" value="{{ $admSubjectEx->id }}"/>
                                                     <button name="submit-form" class="btn-table btn btn-sm btn-default">
                                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 20h4l10.5 -10.5a1.5 1.5 0 0 0 -4 -4l-10.5 10.5v4" /><line x1="13.5" y1="6.5" x2="17.5" y2="10.5" /></svg> Ubah
                                                     </button>  
@@ -79,7 +79,7 @@
                                             </td>
                                         </tr>
                                     @endforeach
-                                    @if (count($admSubjectList) == false)
+                                    @if (count($admSubjectExList) == false)
                                         <tr>
                                             <td colspan="4">
                                                 <div class="my-3 mt-2">
@@ -95,7 +95,7 @@
                             </table>
                         </div>
                         <div class="card-footer">
-                            {{ $admSubjectList->links() }}
+                            {{ $admSubjectExList->links() }}
                         </div>
                     </div>
                 </div>

@@ -167,19 +167,19 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-6">
+                    <div class="col-3">
                         <a href="{{ url('stdashboard') }}">
                             <button type="button" class="btn btn-md btn-secondary mr-auto">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 13l-4 -4l4 -4m-4 4h11a4 4 0 0 1 0 8h-1" /></svg> Kembali
                             </button>  
                         </a>
                     </div>
-                    <div class="col-6 col-edit">
+                    <div class="col-9 col-edit">
                         <button type="button" class="btn btn-md btn-primary ml-auto" onclick="changeEditStat()">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 20h4l10.5 -10.5a1.5 1.5 0 0 0 -4 -4l-10.5 10.5v4" /><line x1="13.5" y1="6.5" x2="17.5" y2="10.5" /></svg> Ubah
                         </button>  
                     </div>
-                    <div class="col-6 col-submit d-none">
+                    <div class="col-9 col-submit d-none">
                         <div class="ml-auto">
                             <button type="button" class="btn btn-md btn-default" onclick="changeEditStat()">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><rect x="4" y="4" width="16" height="16" rx="2" /><path d="M10 10l4 4m0 -4l-4 4" /></svg> Batal

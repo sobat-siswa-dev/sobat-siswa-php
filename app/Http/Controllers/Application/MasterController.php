@@ -21,6 +21,7 @@ use App\Models\{
     AdmTeacher,
     AdmSchool,
     AdmSubject,
+    AdmSubjectEx,
     AdmAlumn
 };
 
@@ -231,6 +232,45 @@ class MasterController extends Controller
             }
         }
 
+    // SubjectEx Page
+        public function subjectExPage (Request $request)
+        {
+            try {
+                if ($request->has("submit-form")) {
+                    $this->model["admSubjectEx"] = $request->has("id") ? AdmSubjectEx::find($request->get("id")) : new AdmSubjectEx();
+                    $this->model["admClassGroupList"] = AdmClassGroup::where("school_id", session()->get("admSchool")->id)
+                                                                    ->where("is_active", 1)
+                                                                    ->orderBy("name", "ASC")
+                                                                    ->get();
+                    return view("application.subjectEx.form", $this->model);
+                } else if ($request->has("submit-save")) {
+                    $admSubjectEx = $request->has("id") ? AdmSubjectEx::find($request->get("id")) : new AdmSubjectEx();
+                    $admSubjectEx->name = $request->get("name");
+                    $admSubjectEx->code = $request->get("code");
+                    $admSubjectEx->group_id = $request->get("group_id");
+                    $admSubjectEx->school_id = session()->get("admSchool")->id;
+                    $admSubjectEx->is_active = 1;
+                    $admSubjectEx->save();
+                    return Redirect::to(url("/master/subjectEx"))
+                                    ->with("actionSuccess", "Sukses menyimpan data !");
+                } else if ($request->has("submit-delete")) {
+                    $admSubjectEx = AdmSubjectEx::find($request->get("id"));
+                    $admSubjectEx->is_active = 0;
+                    $admSubjectEx->save();
+                    return Redirect::to(url("/master/subjectEx"))
+                                    ->with("actionSuccess", "Sukses menghapus data !");
+                }
+            } catch (Throwable $exception) {
+                return Redirect::to(url("/master/subjectEx"))
+                                ->with("actionError", "Terjadi kesalahan !");
+            }
+            $this->model["admSubjectExList"] = AdmSubjectEx::where("school_id", session()->get("admSchool")->id)
+                                                            ->where("is_active", 1)
+                                                            ->orderBy("code", "ASC")
+                                                            ->paginate("10");
+            return view("application.subjectEx.list", $this->model);
+        }
+
     // Subject Page
         public function subjectPage (Request $request)
         {
@@ -254,7 +294,8 @@ class MasterController extends Controller
                                     ->with("actionSuccess", "Sukses menyimpan data !");
                 } else if ($request->has("submit-delete")) {
                     $admSubject = AdmSubject::find($request->get("id"));
-                    $admSubject->delete();
+                    $admSubject->is_active = 0;
+                    $admSubject->save();
                     return Redirect::to(url("/master/subject"))
                                     ->with("actionSuccess", "Sukses menghapus data !");
                 }
@@ -264,7 +305,7 @@ class MasterController extends Controller
             }
             $this->model["admSubjectList"] = AdmSubject::where("school_id", session()->get("admSchool")->id)
                                                             ->where("is_active", 1)
-                                                            ->orderBy("name", "ASC")
+                                                            ->orderBy("code", "ASC")
                                                             ->paginate("10");
             return view("application.subject.list", $this->model);
         }
@@ -383,5 +424,17 @@ class MasterController extends Controller
                                                     ->orderBy("name", "ASC")
                                                     ->paginate("10");
             return view("application.class.list", $this->model);
+        }
+
+    // Student Selector Page
+        public function studentSelectorPage (Request $request)
+        {
+            $this->model["admStudentList"] = AdmStudent::where("school_id", session()->get("admSchool")->id)
+                                                        ->where("is_active", 1)
+                                                        ->where("class_id", $request->get("class_id"))
+                                                        ->orderBy("name", "ASC")
+                                                        ->get();
+            $this->model["requestUrl"] =   $request->get("request_url");
+            return view("application.studentSelector", $this->model);
         }
 }

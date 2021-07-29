@@ -1,3 +1,4 @@
+<script src="{{ asset('distRes/libs/numeric/autoNumeric.js') }}"></script>
 <script src="{{ asset('distRes/libs/apexcharts/dist/apexcharts.min.js') }}"></script>
 <script src="{{ asset('distRes/libs/chartjs/dist/chart.js') }}"></script>
 <script src="{{ asset('distRes/libs/select2/dist/js/select2.min.js') }}"></script>
@@ -27,6 +28,5 @@
 @if(isset($actionSuccess))
 <script>
     toastr["success"]("{{ $actionSuccess }}", "Pemberitahuan")
-
 </script>
 @endif

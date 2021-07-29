@@ -3,7 +3,7 @@
         <div class="row text-center align-items-center flex-row-reverse">
             <div class="col-lg-auto ml-lg-auto">
                 <ul class="list-inline list-inline-dots mb-0">
-                    <li class="list-inline-item"><a href="./docs/index.html"
+                    <li class="list-inline-item"><a href="https://revolution-of-school.gitbook.io/sobat-siswa/"
                             class="link-secondary">Bantuan</a></li>
                     <li class="list-inline-item"><a href="./license.html" class="link-secondary">Website</a>
                     </li>
@@ -15,7 +15,7 @@
                         @ 2020 Sobat Siswa
                     </li>
                     <li class="list-inline-item">
-                        <a href="./changelog.html" class="link-secondary" rel="noopener">v2.0.0</a>
+                        <a href="#" class="link-secondary" rel="noopener">{{ Config::get('app.version') }}</a>
                     </li>
                 </ul>
             </div>

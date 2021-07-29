@@ -92,7 +92,7 @@
             </tr>
         `);
         $.ajax({
-            url: "{{ url('attitude/studentSelector') }}",
+            url: "{{ url('master/studentSelector') }}",
             data: {
                 request_url: "{{ url('attitude/counseling') }}/",
                 class_id: $('[name="class_id"]').val()

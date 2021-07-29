@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class AdmSubject extends Model
+class AdmSubjectEx extends Model
 {
     use HasFactory;
 
-    protected $table = "adm_subject";
+    protected $table = "adm_subject_ex";
     
     public function admClassGroup ()
     {

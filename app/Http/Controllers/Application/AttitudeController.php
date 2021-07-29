@@ -215,16 +215,4 @@ class AttitudeController extends Controller
             $this->model["behTrophyList"]   =   BehTrophy::where("student_id", $id)->orderBy("get_at", "DESC")->get();
             return view("application.trophy.view", $this->model);
         }
-
-    // Student Selector Page
-        public function studentSelectorPage (Request $request)
-        {
-            $this->model["admStudentList"] = AdmStudent::where("school_id", session()->get("admSchool")->id)
-                                                        ->where("is_active", 1)
-                                                        ->where("class_id", $request->get("class_id"))
-                                                        ->orderBy("name", "ASC")
-                                                        ->get();
-            $this->model["requestUrl"] =   $request->get("request_url");
-            return view("application.studentSelector", $this->model);
-        }
 }

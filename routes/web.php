@@ -32,11 +32,13 @@ Route::middleware("auth.teacher")->group(function () {
         Route::any("/class", [MasterController::class, 'classPage']);
         Route::any("/classGroup", [MasterController::class, 'classGroupPage']);
         Route::any("/subject", [MasterController::class, 'subjectPage']);
+        Route::any("/subjectEx", [MasterController::class, 'subjectExPage']);
         Route::any("/student", [MasterController::class, 'studentPage']);
         Route::any("/teacher", [MasterController::class, 'teacherPage']);
         Route::any("/alumn", [MasterController::class, 'alumnPage']);
         Route::any("/rule", [MasterController::class, 'rulePage']);
         Route::any("/school", [MasterController::class, 'schoolPage']);
+        Route::any("/studentSelector", [MasterController::class, 'studentSelectorPage']);
     });  
     Route::prefix("/attitude")->group(function () {
         Route::any("/trophy", [AttitudeController::class, 'trophyPage']);
@@ -45,12 +47,13 @@ Route::middleware("auth.teacher")->group(function () {
         Route::any("/violation/{id}", [AttitudeController::class, 'violationDetailPage']);
         Route::any("/counseling", [AttitudeController::class, 'counselingPage']);
         Route::any("/counseling/{id}", [AttitudeController::class, 'counselingDetailPage']);
-        Route::any("/studentSelector", [AttitudeController::class, 'studentSelectorPage']);
         Route::any("/violationStatistic", [AttitudeController::class, 'violationStatisticPage']);
     });
     Route::prefix("/learning")->group(function () {
         Route::any("/announcement", [LearningController::class, 'announcementPage']);
         Route::any("/announcement/{id}", [LearningController::class, 'announcementDetailPage']);
+        Route::any("/report", [LearningController::class, 'reportPage']);
+        Route::any("/report/{id}", [LearningController::class, 'reportDetailPage']);
     });
 });
 

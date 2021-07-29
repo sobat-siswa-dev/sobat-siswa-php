@@ -1,6 +1,6 @@
 @extends('layout.application')
-@section('title', 'Catatan Prestasi')
-@section('menu-parent', 'attitude')
+@section('title', 'Laporan Belajar')
+@section('menu-parent', 'learning')
 @section('content')
     <div class="content">
         <div class="container-xl">
@@ -8,10 +8,10 @@
                 <div class="row align-items-center">
                     <div class="col">
                         <div class="page-pretitle">
-                            Evaluasi Perilaku
+                            Informasi dan KBM
                         </div>
                         <h2 class="page-title">
-                            Catatan Prestasi
+                            Laporan Belajar
                         </h2>
                     </div>
                 </div>
@@ -55,9 +55,6 @@
                                         <th>
                                             Nama
                                         </th>
-                                        <th>
-                                            Jumlah Prestasi
-                                        </th>
                                         <th style="width: 100px;"></th>
                                     </tr>
                                 </thead>
@@ -97,7 +94,7 @@
         $.ajax({
             url: "{{ url('master/studentSelector') }}",
             data: {
-                request_url: "{{ url('attitude/trophy') }}/",
+                request_url: "{{ url('learning/report') }}/",
                 class_id: $('[name="class_id"]').val()
             },
             success: function (result) {
