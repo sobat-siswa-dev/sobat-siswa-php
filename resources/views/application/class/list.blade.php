@@ -99,7 +99,7 @@
                                     @endforeach
                                     @if (count($admClassList) == false)
                                         <tr>
-                                            <td colspan="5">
+                                            <td colspan="7">
                                                 <div class="my-3 mt-2">
                                                     <img class="d-block m-auto" style="width: 200px; max-width: 100%;" src="{{ asset('./staticRes/empty.png') }}" alt="">
                                                     <h3 class="text-center" style="color: #2e576d; font-weight: bolder;">

@@ -70,6 +70,6 @@ class RegistrationController extends Controller
             $admTeacher->is_active = 1;
             $admTeacher->save();
             session()->flush();
-            return view("registration.finish", ["email" => $admTeacher->email, "password" => "sobatSiswaJaya"]);
+            return view("registration.finish", ["email" => $admTeacher->email, "password" => "sobatSiswaJaya", "code" => $admSchool->code]);
         }
 }

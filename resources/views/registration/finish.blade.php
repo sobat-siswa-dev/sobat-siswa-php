@@ -20,6 +20,14 @@
                     <tbody>
                         <tr>
                             <td style="text-align:right;">
+                                Kode Sekolah
+                            </td>
+                            <th style="color: #374897; text-align:left;">
+                                {{ $code }}
+                            </th>
+                        </tr>
+                        <tr>
+                            <td style="text-align:right;">
                                 Nama Pengguna
                             </td>
                             <th style="color: #374897; text-align:left;">
