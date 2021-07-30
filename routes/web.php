@@ -72,6 +72,7 @@ Route::middleware("auth.student")->group(function () {
     Route::prefix("/stlearning")->group(function () {
         Route::any("/announcement", [StLearningController::class, 'stAnnouncementPage']);
         Route::any("/announcement/{id}", [StLearningController::class, 'stAnnouncementDetailPage']);
+        Route::any("/report", [StLearningController::class, 'stReportPage']);
     });
 });
 

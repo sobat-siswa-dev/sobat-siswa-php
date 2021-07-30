@@ -86,44 +86,6 @@
                         <div class="card mb-3">
                             <div class="card-header">
                                 <h3 class="mb-0">
-                                    Data Ekstrakurikuler
-                                </h3>
-                            </div>
-                            <div class="table-responsive">
-                                <table class="table card-table table-vcenter">
-                                    <thead>
-                                        <tr>
-                                            <th>
-                                                Ekstrakurikuler
-                                            </th>
-                                            <th>
-                                                Nilai Akhir
-                                            </th>
-                                            <th>
-                                                Aksi
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="subject-ex-table">
-                                    </tbody>
-                                    <tbody>
-                                        <tr>
-                                            <td colspan="3" style="border-top: 1px solid rgba(101,109,119,.16);">
-                                                <button class="btn btn-sm btn-primary" type="button" onclick="addSubjectExRow()">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg> Tambah Ekstrakurikuler
-                                                </button>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="card-footer">
-                                <small>* Isi jika ingin menjabarkan nilai pada laporan</small>
-                            </div>
-                        </div>
-                        <div class="card mb-3">
-                            <div class="card-header">
-                                <h3 class="mb-0">
                                     Data Mata Pelajaran
                                 </h3>
                             </div>
@@ -200,6 +162,44 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="card mb-3">
+                            <div class="card-header">
+                                <h3 class="mb-0">
+                                    Data Ekstrakurikuler
+                                </h3>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table card-table table-vcenter">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                Ekstrakurikuler
+                                            </th>
+                                            <th>
+                                                Nilai Akhir
+                                            </th>
+                                            <th>
+                                                Aksi
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="subject-ex-table">
+                                    </tbody>
+                                    <tbody>
+                                        <tr>
+                                            <td colspan="3" style="border-top: 1px solid rgba(101,109,119,.16);">
+                                                <button class="btn btn-sm btn-primary" type="button" onclick="addSubjectExRow()">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg> Tambah Ekstrakurikuler
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="card-footer">
+                                <small>* Isi jika ingin menjabarkan nilai pada laporan</small>
                             </div>
                         </div>
                         <div class="alert alert-danger" role="alert">

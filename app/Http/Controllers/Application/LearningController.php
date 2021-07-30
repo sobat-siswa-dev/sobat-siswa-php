@@ -77,22 +77,26 @@ class LearningController extends Controller
                         $kbmReport->attch = Utility::uploadFile($request, "attch", "attch-report/");
                     }
                     $kbmReport->save();
-                    foreach ($request->get("kbmReportDet") as $arr) {
-                        $kbmReportDet = new KbmReportDet();
-                        $kbmReportDet->subject_id = $arr["subject_id"];
-                        $kbmReportDet->mark_limit = str_replace(",", ".", $arr["mark_limit"]);
-                        $kbmReportDet->mark_practice = isset($arr["mark_practice"]) ? str_replace(",", ".", $arr["mark_practice"]) : null;
-                        $kbmReportDet->mark_knowledge = isset($arr["mark_knowledge"]) ? str_replace(",", ".", $arr["mark_knowledge"]) : null;
-                        $kbmReportDet->mark_total = str_replace(",", ".", $arr["mark_total"]);
-                        $kbmReportDet->report_id = $kbmReport->id;
-                        $kbmReportDet->save();
+                    if ($request->has("kbmReportDet")) {
+                        foreach ($request->get("kbmReportDet") as $arr) {
+                            $kbmReportDet = new KbmReportDet();
+                            $kbmReportDet->subject_id = $arr["subject_id"];
+                            $kbmReportDet->mark_limit = str_replace(",", ".", $arr["mark_limit"]);
+                            $kbmReportDet->mark_practice = isset($arr["mark_practice"]) ? str_replace(",", ".", $arr["mark_practice"]) : null;
+                            $kbmReportDet->mark_knowledge = isset($arr["mark_knowledge"]) ? str_replace(",", ".", $arr["mark_knowledge"]) : null;
+                            $kbmReportDet->mark_total = str_replace(",", ".", $arr["mark_total"]);
+                            $kbmReportDet->report_id = $kbmReport->id;
+                            $kbmReportDet->save();
+                        }
                     }
-                    foreach ($request->get("kbmReportDetEx") as $arr) {
-                        $kbmReportDetEx = new KbmReportDetEx();
-                        $kbmReportDetEx->subject_ex_id = $arr["subject_ex_id"];
-                        $kbmReportDetEx->mark = $arr["mark"];
-                        $kbmReportDetEx->report_id = $kbmReport->id;
-                        $kbmReportDetEx->save();
+                    if ($request->has("kbmReportDetEx")) {
+                        foreach ($request->get("kbmReportDetEx") as $arr) {
+                            $kbmReportDetEx = new KbmReportDetEx();
+                            $kbmReportDetEx->subject_ex_id = $arr["subject_ex_id"];
+                            $kbmReportDetEx->mark = $arr["mark"];
+                            $kbmReportDetEx->report_id = $kbmReport->id;
+                            $kbmReportDetEx->save();
+                        }
                     }
                     return Redirect::to(url('learning/report/' . $id))
                                     ->with("actionSuccess", "Sukses menyimpan data !");
@@ -107,6 +111,26 @@ class LearningController extends Controller
                     $this->model["kbmReport"] =     KbmReport::find($request->get("id"));
                     $this->model["kbmReportDetList"] =  KbmReportDet::where("report_id", $request->get("id"))->get();
                     $this->model["kbmReportDetExList"] =  KbmReportDetEx::where("report_id", $request->get("id"))->get();
+                    $this->model["kbmReportBe"] = KbmReport::where("semester", ($this->model["kbmReport"]->semester - 1))
+                                                            ->where("year_learn", $this->model["kbmReport"]->year_learn)
+                                                            ->where("is_active", 1)
+                                                            ->where("student_id", $id)
+                                                            ->first();
+                    if ($this->model["kbmReportBe"]) {
+                        $result = [];
+                        foreach ($this->model["kbmReportDetList"] as $kbmReportDet) {
+                            $kbmReportDetBe = KbmReportDet::where("report_id", $this->model["kbmReportBe"]->id)
+                                                        ->where("subject_id", $kbmReportDet->subject_id)
+                                                        ->first();
+                            if ($kbmReportDetBe) {
+                                $kbmReportDet->mark_knowledge_be = $kbmReportDetBe->mark_knowledge;
+                                $kbmReportDet->mark_practice_be = $kbmReportDetBe->mark_practice;
+                                $kbmReportDet->mark_total_be = $kbmReportDetBe->mark_total;
+                            }
+                            $result[]   =   $kbmReportDet;
+                        }
+                        $this->model["kbmReportDetList"] = $result;
+                    }
                     return view("application.report.view-detail", $this->model);
                 }
             } catch (Throwable $exception) {

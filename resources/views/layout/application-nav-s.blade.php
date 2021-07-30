@@ -73,6 +73,9 @@
                 <a class="dropdown-item" href="{{ url('stlearning/announcement') }}">
                     Pengumuman
                 </a>
+                <a class="dropdown-item" href="{{ url('stlearning/report') }}">
+                    Laporan Belajar
+                </a>
             </div>
         </div>
     </div>

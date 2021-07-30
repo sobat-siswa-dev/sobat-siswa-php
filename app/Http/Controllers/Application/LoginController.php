@@ -49,7 +49,7 @@ class LoginController extends Controller
                     $this->model["actionError"] = "Sekolah tidak terdaftar !";
                 }
             }
-            return view("login.student");
+            return view("login.student", $this->model);
         }
 
     // Teacher Page   
