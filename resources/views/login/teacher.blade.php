@@ -9,7 +9,13 @@
 <div class="flex-fill d-flex flex-column justify-content-center py-4">
     <div class="container-tight py-6">
         <div class="text-center mb-4">
-            <a href="."><img src="{{ asset('staticRes/monogram-logo.svg') }}" height="25" alt=""></a>
+            @if (isset($admSchool))
+                <a href="#">
+                    <img src="{{ asset($admSchool->logo ? $admSchool->logo : './distRes/img/school-placeholder.png') }}" height="120" alt="Logo Sekolah">
+                </a>
+            @else 
+                <a href="#"><img src="{{ asset('staticRes/monogram-logo.svg') }}" height="25" alt="Logo Sobat Siswa"></a>
+            @endif
         </div>
         <form action="" method="POST">
             {{ csrf_field() }}
@@ -20,7 +26,7 @@
                     </h3>
                     <div class="row">
                         <div class="col">
-                            <a href="{{ url('/login-student') }}" class="btn btn-switcher btn-white w-100">
+                            <a href="{{ isset($admSchool) ? url('/login-student/' . $admSchool->code) : url('/login-student') }}" class="btn btn-switcher btn-white w-100">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
                                     viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
                                     stroke-linecap="round" stroke-linejoin="round">
@@ -31,7 +37,7 @@
                             </a>
                         </div>
                         <div class="col">
-                            <a href="{{ url('/login-teacher') }}" class="btn btn-switcher btn-primary w-100">
+                            <a href="{{ isset($admSchool) ? url('/login-teacher/' . $admSchool->code) : url('/login-teacher') }}" class="btn btn-switcher btn-primary w-100">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
                                     viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
                                     stroke-linecap="round" stroke-linejoin="round">
@@ -44,10 +50,14 @@
                     </div>
                 </div>
                 <div class="card-body">
+                    @if (isset($admSchool))
+                        <input type="hidden" name="code" value="{{ $admSchool->code }}">
+                    @else
                     <div class="mb-3">
                         <label class="form-label">Kode Sekolah</label>
                         <input required="" name="code" type="text" maxlength="100" class="form-control" autocomplete="off">
                     </div>
+                    @endif
                     <div class="mb-3">
                         <label class="form-label">Email Pengguna</label>
                         <input required="" name="teacher_email" type="email" maxlength="100" class="form-control" autocomplete="off">

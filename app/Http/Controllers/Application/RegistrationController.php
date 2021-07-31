@@ -8,6 +8,8 @@ use App\Http\Controllers\{
     QueryUtility
 };
 
+use Redirect;
+
 use Illuminate\Http\Request;
 use App\Models\{
     AdmSchool,
@@ -59,7 +61,12 @@ class RegistrationController extends Controller
         public function finishPage (Request $request)
         {
             $admSchool = session()->get("admSchool");
+            if (AdmTeacher::where("email", $admSchool->admin_email)->count()) {
+                return Redirect::to(url("/registration"))->with("actionError", "Email sudah pernah didaftarkan !");
+            }
             $admSchool->code = Utility::createSlug($admSchool->name);
+            $admSchool->save();
+            $admSchool->code = $admSchool->id . "-" . $admSchool->code;
             $admSchool->save();
             $admTeacher = new AdmTeacher();
             $admTeacher->name = $admSchool->admin_name;

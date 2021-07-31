@@ -24,7 +24,7 @@ class LoginController extends Controller
         public $model = [];
 
     // Student Page   
-        public function studentPage (Request $request)
+        public function studentPage (Request $request, $schoolCode = null)
         {
             if ($request->get("submit")) {
                 $admSchool = AdmSchool::where("code", $request->get("code"))->first();
@@ -49,11 +49,17 @@ class LoginController extends Controller
                     $this->model["actionError"] = "Sekolah tidak terdaftar !";
                 }
             }
+            if ($schoolCode) {
+                $this->model["admSchool"] = AdmSchool::where("code", $schoolCode)->first();
+                if (!$this->model["admSchool"]) {
+                    return redirect(url("/login-student"));
+                }
+            }
             return view("login.student", $this->model);
         }
 
     // Teacher Page   
-        public function teacherPage (Request $request)
+        public function teacherPage (Request $request, $schoolCode = null)
         {
             if ($request->get("submit")) {
                 $admSchool = AdmSchool::where("code", $request->get("code"))->first();
@@ -78,13 +84,20 @@ class LoginController extends Controller
                     $this->model["actionError"] = "Sekolah tidak terdaftar !";
                 }
             }
+            if ($schoolCode) {
+                $this->model["admSchool"] = AdmSchool::where("code", $schoolCode)->first();
+                if (!$this->model["admSchool"]) {
+                    return redirect(url("/login-teacher"));
+                }
+            }
             return view("login.teacher", $this->model);
         }
 
     // Logout Page
         public function logoutPage (Request $request)
         {
+            $schoolCode = session()->get("admSchool")->code;
             session()->flush();
-            return redirect(url("/login"));
+            return redirect(url("/login-student/$schoolCode"));
         }
 }

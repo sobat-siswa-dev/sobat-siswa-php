@@ -99,3 +99,6 @@ Route::any("/login", function () {
 Route::any("/logout", [LoginController::class, 'logoutPage']);
 Route::any("/login-student", [LoginController::class, 'studentPage']);
 Route::any("/login-teacher", [LoginController::class, 'teacherPage']);
+
+Route::any("/login-student/{schoolCode}", [LoginController::class, 'studentPage']);
+Route::any("/login-teacher/{schoolCode}", [LoginController::class, 'teacherPage']);
