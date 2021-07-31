@@ -20,6 +20,7 @@ class QueryUtility
                 bv.student_id = ast.id
             where 
                 ast.school_id = $school_id
+                and ast.is_active in (1,2)
                 and month(bv.get_at) = $month
                 and year(bv.get_at) = $year 
             group by 
@@ -42,6 +43,7 @@ class QueryUtility
                 bv.student_id = ast.id
             where
                 ast.school_id = $school_id
+                and ast.is_active in (1,2)
                 and month(bv.get_at) = $month
                 and year(bv.get_at) = $year 
         ";
@@ -67,6 +69,7 @@ class QueryUtility
                 ast.id = bv.student_id
             where 
                 ac.school_id = $school_id 
+                and ast.is_active in (1,2)
             order by
                 bv.id desc
             limit 3
@@ -88,7 +91,8 @@ class QueryUtility
             join adm_student ast on
                 ast.id = bt.student_id
             where 
-                ast.school_id = $school_id
+                ast.school_id = $school_id 
+                and ast.is_active in (1,2)
             order by
                 bt.id desc
             limit 3

@@ -79,4 +79,8 @@
     .text-black {
         color: rgb(35, 46, 60);
     }
+
+    .select2 {
+    width: 100% !important;
+    }
 </style>

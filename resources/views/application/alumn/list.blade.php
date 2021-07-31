@@ -58,10 +58,10 @@
                                                 {{ $admStudentAlumn->name }}
                                             </td>
                                             <td>
-                                                @if ($admStudentAlumn->admAlumn)
-                                                    Angkatan Tahun {{ $admStudentAlumn->admAlumn->year }} 
-                                                    @if ($admStudentAlumn->admAlumn) 
-                                                        ({{ $admStudentAlumn->admAlumn->name }})
+                                                @if ($admStudentAlumn->admAlumn())
+                                                    Angkatan Tahun {{ $admStudentAlumn->admAlumn()->year }} 
+                                                    @if ($admStudentAlumn->admAlumn()->name) 
+                                                        ({{ $admStudentAlumn->admAlumn()->name }})
                                                     @endif
                                                 @endif
                                             </td>
