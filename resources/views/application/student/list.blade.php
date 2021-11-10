@@ -19,7 +19,7 @@
             <div class="row row-deck row-cards">
                 <div class="col-12 d-block">
                     <div class="card">
-                        <div class="card-header">
+                        <div class="card-header" data-btn-function="form">
                             <form method="POST" action="">
                                 {{ csrf_field() }}
                                 <button name="submit-form" class="btn btn-sm btn-primary">
@@ -120,7 +120,7 @@
                                         <th>
                                             No. Telp
                                         </th>
-                                        <th>
+                                        <th data-btn-function="form">
                                             Aksi
                                         </th>
                                     </tr>
@@ -142,7 +142,7 @@
                                             <td>
                                                 @if ($admStudent->gender == 'L')
                                                     Laki-laki
-                                                @elseif ($admStudent == 'P') 
+                                                @elseif ($admStudent->gender == 'P') 
                                                     Perempuan
                                                 @endif
                                             </td>
@@ -152,7 +152,7 @@
                                             <td>
                                                 {{ $admStudent->phone }}
                                             </td>
-                                            <td>
+                                            <td data-btn-function="form">
                                                 <form method="POST" action="">
                                                     {{ csrf_field() }}
                                                     <input type="hidden" name="id" value="{{ $admStudent->id }}"/>

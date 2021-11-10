@@ -19,7 +19,7 @@
             <div class="row row-deck row-cards">
                 <div class="col-12 d-block">
                     <div class="card">
-                        <div class="card-header">
+                        <div class="card-header" data-btn-function="form">
                             <form method="POST" action="">
                                 {{ csrf_field() }}
                                 <button name="submit-form" class="btn btn-sm btn-primary">
@@ -44,7 +44,7 @@
                                         <th>
                                             Jurusan
                                         </th>
-                                        <th width="20%">
+                                        <th width="20%" data-btn-function="form">
                                             Aksi
                                         </th>
                                     </tr>
@@ -63,7 +63,7 @@
                                                     {{ $admSubject->admClassGroup()->name }}
                                                 @endif
                                             </td>
-                                            <td>
+                                            <td data-btn-function="form">
                                                 <form method="POST" action="">
                                                     {{ csrf_field() }}
                                                     <input type="hidden" name="id" value="{{ $admSubject->id }}"/>

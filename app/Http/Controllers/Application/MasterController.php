@@ -11,7 +11,10 @@ use App\Http\Controllers\{
 
 use Illuminate\Http\Request;
 
-use App\Exports\ExpStudent;
+use App\Exports\{
+    ExpStudent,
+    ExpStudentAlumn
+};
 
 use App\Models\{
     AdmRule,
@@ -96,11 +99,30 @@ class MasterController extends Controller
     // Alumn Page
         public function alumnPage (Request $request)
         {
-            $this->model["admStudentAlumnList"] = AdmStudent::where("school_id", session()->get("admSchool")->id)
-                                                            ->where("is_active", 2)
+            try {
+                if ($request->has("submit-export")) {
+                    $this->filterStudentPage($request);
+                    $this->model["admStudentAlumnList"] = $this->model["admStudentList"];
+                    $this->model["admStudentAlumnList"] = $this->model["admStudentAlumnList"]->where("is_active", 2)
+                                                                    ->orderBy("alumn_id", "ASC")
+                                                                    ->orderBy("name", "ASC")
+                                                                    ->paginate("10");
+                    return \Excel::download(new ExpStudentAlumn($this->model), "Data-Alumni-" . date("dmyHis") . ".xlsx");
+                }
+            } catch (Throwable $exception) {
+                return Redirect::to(url("/master/student"))
+                                ->with("actionError", "Terjadi kesalahan !");
+            }
+            $this->filterStudentPage($request);
+            $this->model["admStudentAlumnList"] = $this->model["admStudentList"];
+            $this->model["admStudentAlumnList"] = $this->model["admStudentAlumnList"]->where("is_active", 2)
                                                             ->orderBy("alumn_id", "ASC")
                                                             ->orderBy("name", "ASC")
                                                             ->paginate("10");
+            $this->model["admAlumnList"] = AdmAlumn::where("school_id", session()->get("admSchool")->id)
+                                                ->orderBy("year", "ASC")
+                                                ->get();
+            unset($this->model["admStudentList"]);
             return view("application.alumn.list", $this->model);
         }
 
@@ -196,6 +218,7 @@ class MasterController extends Controller
                 } else if ($request->has("submit-export")) {
                     $this->filterStudentPage($request);
                     $this->model["admStudentList"] = $this->model["admStudentList"]->orderBy("class_id", "ASC")
+                                                                ->where("is_active", 1)
                                                                 ->orderBy("name", "ASC")
                                                                 ->get();
                     return \Excel::download(new ExpStudent($this->model), "Data-Siswa-" . date("dmyHis") . ".xlsx");
@@ -210,6 +233,7 @@ class MasterController extends Controller
                                                     ->orderBy("name", "ASC")
                                                     ->get();
             $this->model["admStudentList"] = $this->model["admStudentList"]->orderBy("class_id", "ASC")
+                                                        ->where("is_active", 1)
                                                         ->orderBy("name", "ASC")
                                                         ->paginate("10");
             return view("application.student.list", $this->model);
@@ -217,10 +241,12 @@ class MasterController extends Controller
 
         public function filterStudentPage (Request $request)
         {
-            $this->model["admStudentList"] = AdmStudent::where("school_id", session()->get("admSchool")->id)
-                                                        ->where("is_active", 1);
+            $this->model["admStudentList"] = AdmStudent::where("school_id", session()->get("admSchool")->id);
             if ($request->get("class_id")) {
                 $this->model["admStudentList"] = $this->model["admStudentList"]->where("class_id", $request->get("class_id"));
+            }
+            if ($request->get("alumn_id")) {
+                $this->model["admStudentList"] = $this->model["admStudentList"]->where("alumn_id", $request->get("alumn_id"));
             }
             if ($request->get("gender")) {
                 $this->model["admStudentList"] = $this->model["admStudentList"]->where("gender", $request->get("gender"));

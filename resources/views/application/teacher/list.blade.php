@@ -19,10 +19,10 @@
             <div class="row row-deck row-cards">
                 <div class="col-12 d-block">
                     <div class="card">
-                        <div class="card-header">
+                        <div class="card-header" data-btn-function="form">
                             <form method="POST" action="">
                                 {{ csrf_field() }}
-                                <button name="submit-form" class="btn btn-sm btn-primary">
+                                <button data-btn-function="form" name="submit-form" class="btn btn-sm btn-primary">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg> Tambah
                                 </button>  
                                 &nbsp;
@@ -53,7 +53,7 @@
                                         <th>
                                             Role Aplikasi
                                         </th>
-                                        <th>
+                                        <th data-btn-function="form">
                                             Aksi
                                         </th>
                                     </tr>
@@ -83,7 +83,7 @@
                                                     Guru
                                                 @endif
                                             </td>
-                                            <td>
+                                            <td data-btn-function="form">
                                                 <form method="POST" action="">
                                                     {{ csrf_field() }}
                                                     <input type="hidden" name="id" value="{{ $admTeacher->id }}"/>

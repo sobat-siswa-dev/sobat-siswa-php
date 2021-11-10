@@ -19,16 +19,29 @@
                     </div>
                 </div>
             </div>
-            <div class="col-6">
-                <div class="form-group mb-0">
-                    <label class="form-label">
-                        Kelas
-                    </label>
-                    <div class="form-control">
-                        {{ $admStudent->admClass()->name }}
+            @if ($admStudent->admClass())
+                <div class="col-6">
+                    <div class="form-group mb-0">
+                        <label class="form-label">
+                            Kelas
+                        </label>
+                        <div class="form-control">
+                            {{ $admStudent->admClass()->name }}
+                        </div>
                     </div>
                 </div>
-            </div>
+            @elseif ($admStudent->admAlumn())
+                <div class="col-6">
+                    <div class="form-group mb-0">
+                        <label class="form-label">
+                            Angkatan
+                        </label>
+                        <div class="form-control">
+                            Tahun {{ $admStudent->admAlumn()->year }} 
+                        </div>
+                    </div>
+                </div>
+            @endif
         </div>
         <div id="shortcut-info"></div>
     </div>

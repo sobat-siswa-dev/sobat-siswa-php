@@ -19,7 +19,7 @@
             <div class="row row-deck row-cards">
                 <div class="col-12 d-block">
                     <div class="card">
-                        <div class="card-header">
+                        <div class="card-header" data-btn-function="form">
                             <form method="POST" action="">
                                 {{ csrf_field() }}
                                 <button name="submit-form" class="btn btn-sm btn-primary">
@@ -44,7 +44,7 @@
                                         <th>
                                             Poin
                                         </th>
-                                        <th width="35%">
+                                        <th width="35%" data-btn-function="form">
                                             Aksi
                                         </th>
                                     </tr>
@@ -61,7 +61,7 @@
                                             <td>
                                                 {{ $admRule->poin + 0 }} Poin Pelanggaran
                                             </td>
-                                            <td>
+                                            <td data-btn-function="form">
                                                 <form method="POST" action="">
                                                     {{ csrf_field() }}
                                                     <input type="hidden" name="id" value="{{ $admRule->id }}"/>

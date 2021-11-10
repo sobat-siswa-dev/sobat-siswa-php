@@ -17,10 +17,18 @@ toastr.options = {
 };
 
 $('[data-btn-function="export"]').remove();
+$('form').attr("autocomplete", "off");
+$('input, textarea, select').attr("autocomplete", "off");
 $("body").fadeIn(500);
 $(".table-responsive table tr td").each(function () {
     if ($(this).html().trim() == '') {$(this).html('-')}
 });
+
+if ($('[type="file"]' + ", [type='file']").length) {
+    $('[type="file"]' + ", [type='file']").each(function () {
+        if ($(this).attr("accept") == undefined) {$(this).attr('accept', '.xlsx, .xls, image/*, .doc, .docx, .ppt, .pptx, .pdf')}
+    });
+}
 
 $('.select-search').select2();
 $('textarea').attr("spellcheck", "false");
@@ -34,4 +42,13 @@ function modalAlertDom (dom, title, description) {
         window.domAlert.click();
     });
     $("#modal-alert").modal("show");
+}
+
+function showPassword (e) {
+    let parent = $(e).parent().parent().parent();
+    let input = $($(parent).find("input"));
+    $($(parent).find(($(input).attr("type") == 'text' ? '.icon-eye' : '.icon-close-eye'))).show();
+    console.log($($(parent).find(($(input).attr("type") == 'text' ? '.icon-eye' : '.icon-close-eye'))))
+    $($(parent).find(($(input).attr("type") == 'text' ? '.icon-close-eye' : '.icon-eye'))).hide();
+    $(input).attr("type", ($(input).attr("type") == 'text' ? 'password' : 'text'));
 }

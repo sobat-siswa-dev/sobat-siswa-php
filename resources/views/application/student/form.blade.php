@@ -151,7 +151,7 @@
                                             <label class="form-label">
                                                 Pekerjaan Ayah
                                             </label>
-                                            <input name="father_name" value="{{ $admStudent->father_name }}" type="text" maxlength="100" class="form-control">
+                                            <input name="father_work" value="{{ $admStudent->father_work }}" type="text" maxlength="100" class="form-control">
                                         </div>
                                     </div>
                                 </div>
@@ -169,7 +169,7 @@
                                             <label class="form-label">
                                                 Pekerjaan Ibu
                                             </label>
-                                            <input name="mother_name" value="{{ $admStudent->mother_name }}" type="text" maxlength="100" class="form-control">
+                                            <input name="mother_work" value="{{ $admStudent->mother_work }}" type="text" maxlength="100" class="form-control">
                                         </div>
                                     </div>
                                 </div>
@@ -187,7 +187,7 @@
                                             <label class="form-label">
                                                 Pekerjaan Wali
                                             </label>
-                                            <input name="vice_name" value="{{ $admStudent->vice_name }}" type="text" maxlength="100" class="form-control">
+                                            <input name="vice_work" value="{{ $admStudent->vice_work }}" type="text" maxlength="100" class="form-control">
                                         </div>
                                     </div>
                                 </div>

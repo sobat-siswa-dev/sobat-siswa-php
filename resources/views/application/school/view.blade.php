@@ -19,7 +19,7 @@
             <div class="row row-deck row-cards">
                 <div class="col-12 col-lg-12 d-block">
                     <div class="card">
-                        <div class="card-header">
+                        <div class="card-header" data-btn-function="form">
                             <form method="POST" action="">
                                 {{ csrf_field() }}
                                 <button name="submit-form" class="btn btn-sm btn-primary">

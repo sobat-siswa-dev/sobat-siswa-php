@@ -17,7 +17,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <a href="{{ url('dashboard') }}" class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pr-0 pr-md-3">
-                    <img src="{{ asset('./staticRes/logo-white-ss.svg') }}" width="110" height="32" alt="Tabler" class="navbar-brand-image">
+                    {{ session()->get("admSchool")->name }}
                 </a>
                 <div class="navbar-nav flex-row order-md-last">
                     <div class="nav-item dropdown">
@@ -26,7 +26,13 @@
                                 <span class="avatar avatar-sm" style="background-image: url({{ asset('./distRes/img/teacher-placeholder.png') }})"></span>
                                 <div class="d-none d-xl-block ps-2 ml-3">
                                     <div class="text-white">{{ session()->get("admTeacher")->name }}</div>
-                                    <div class="mt-1 small text-muted">Guru</div>
+                                    <div class="mt-1 small text-muted">
+                                        @if (session()->get("admTeacher")->role == 0)
+                                            Pengelola
+                                        @elseif (session()->get("admTeacher")->role == 1)
+                                            Guru
+                                        @endif
+                                    </div>
                                 </div>
                             @elseif (session()->get("admStudent"))
                                 <span class="avatar avatar-sm" style="background-image: url({{ asset('./distRes/img/student-placeholder.png') }})"></span>
@@ -90,6 +96,13 @@
             $(`[data-menu-parent='@yield("menu-parent")']`).addClass("active");
         });
     </script>
+    @if (session()->get("admTeacher")->role != 0)
+        <script>
+            if (window.location.href.includes("/master")) {
+                $('[data-btn-function="form"]').remove();
+            }
+        </script>
+    @endif
 </body>
 
 </html>

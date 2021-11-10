@@ -3,9 +3,9 @@
         <div class="row text-center align-items-center flex-row-reverse">
             <div class="col-lg-auto ml-lg-auto">
                 <ul class="list-inline list-inline-dots mb-0">
-                    <li class="list-inline-item"><a href="https://revolution-of-school.gitbook.io/sobat-siswa/"
+                    <li class="list-inline-item"><a href="https://sobat-siswa.gitbook.io/sobat-siswa/"
                             class="link-secondary">Bantuan</a></li>
-                    <li class="list-inline-item"><a href="./license.html" class="link-secondary">Website</a>
+                    <li class="list-inline-item"><a href="https://sobat-siswa-dev.github.io/" class="link-secondary">Website</a>
                     </li>
                 </ul>
             </div>
