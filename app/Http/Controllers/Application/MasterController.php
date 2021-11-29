@@ -47,10 +47,12 @@ class MasterController extends Controller
                     $admSchool->email = $request->get("email");
                     $admSchool->telp = $request->get("telp");
                     $admSchool->fax = $request->get("fax");
+                    $admSchool->color = $request->get("color");
                     if ($request->file("attch")) {
                         $admSchool->logo = Utility::uploadFile($request, "attch", "attch-school/");
                     }
                     $admSchool->save();
+                    session()->put("admSchool", $admSchool);
                     return Redirect::to(url("/master/school"))
                                     ->with("actionSuccess", "Sukses menyimpan data !");
                 }

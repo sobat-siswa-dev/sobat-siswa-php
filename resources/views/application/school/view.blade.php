@@ -31,7 +31,7 @@
                             <div class="row">
                                 <div class="col-lg-9">
                                     <div class="row">
-                                        <div class="col-lg-12">
+                                        <div class="col-lg-10">
                                             <div class="form-group mb-3">
                                                 <label class="form-label">
                                                     Nama
@@ -41,7 +41,19 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-12">
+                                        <div class="col-lg-2">
+                                            <div class="form-group mb-3">
+                                                <label class="form-label">
+                                                    Warna
+                                                </label>
+                                                <div class="form-control">
+                                                    <div style="background: {{ $admSchool->color ? $admSchool->color : '#3955a4' }}">
+                                                        &nbsp;
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
                                             <div class="form-group mb-3">
                                                 <label class="form-label">
                                                     Email
@@ -51,7 +63,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-6">
+                                        <div class="col-lg-4">
                                             <div class="form-group mb-3">
                                                 <label class="form-label">
                                                     Telp
@@ -61,7 +73,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-6">
+                                        <div class="col-lg-4">
                                             <div class="form-group mb-3">
                                                 <label class="form-label">
                                                     Fax

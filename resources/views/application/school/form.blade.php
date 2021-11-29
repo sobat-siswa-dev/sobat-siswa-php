@@ -54,6 +54,12 @@
                                 </div>
                                 <div class="form-group mb-3">
                                     <label class="form-label">
+                                        Warna
+                                    </label>
+                                    <input name="color" value="{{ $admSchool->color }}" type="color" class="form-control" style="width: 200px; max-width: 100%;">
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="form-label">
                                         {{ $admSchool->logo ? "Ganti" : "" }} Logo
                                     </label>
                                     <div class="form-control">

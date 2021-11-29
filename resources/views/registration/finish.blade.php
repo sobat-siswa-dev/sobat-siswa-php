@@ -46,6 +46,11 @@
                 </table>
                 <p class="text-muted">
                     <span class="d-inline-block pt-1">Semoga fitur yang kami sediakan bermanfaat ya !</span>
+                    <a href="{{ url('/login-student/') }}">
+                        <button class="mt-3 btn btn-primary btn-sm">
+                            Masuk ke Halaman masuk
+                        </button>
+                    </a>
                 </p>
             </div>
         </div>

@@ -21,6 +21,9 @@ class RegistrationController extends Controller
     // Root Page
         public function rootPage (Request $request)
         {
+            if (AdmSchool::count() > 0) {
+                return redirect(url("/login-student"));
+            }
             $admSchool = session()->get("admSchool") ? session()->get("admSchool") : new AdmSchool();
             session(["admSchool" => $admSchool]);
             return view("registration.root");
@@ -29,6 +32,9 @@ class RegistrationController extends Controller
     // Step 1 Page
         public function step1Page (Request $request)
         {
+            if (AdmSchool::count() > 0) {
+                return redirect(url("/login-student"));
+            }
             $admSchool = session()->get("admSchool");
             $admSchool->name = $request->get("name");
             session(["admSchool" => $admSchool]);
@@ -38,6 +44,9 @@ class RegistrationController extends Controller
     // Step 2 Page
         public function step2Page (Request $request)
         {
+            if (AdmSchool::count() > 0) {
+                return redirect(url("/login-student"));
+            }
             $admSchool = session()->get("admSchool");
             $admSchool->address = $request->get("address");
             $admSchool->email = $request->get("email");
@@ -50,6 +59,9 @@ class RegistrationController extends Controller
     // Final Page
         public function finalPage (Request $request)
         {
+            if (AdmSchool::count() > 0) {
+                return redirect(url("/login-student"));
+            }
             $admSchool = session()->get("admSchool");
             $admSchool->admin_name = $request->get("admin_name");
             $admSchool->admin_email = $request->get("admin_email");
@@ -60,13 +72,16 @@ class RegistrationController extends Controller
     // Finish Page
         public function finishPage (Request $request)
         {
+            if (AdmSchool::count() > 0) {
+                return redirect(url("/login-student"));
+            }
             $admSchool = session()->get("admSchool");
             if (AdmTeacher::where("email", $admSchool->admin_email)->count()) {
                 return Redirect::to(url("/registration"))->with("actionError", "Email sudah pernah didaftarkan !");
             }
             $admSchool->code = Utility::createSlug($admSchool->name);
             $admSchool->save();
-            $admSchool->code = $admSchool->id . "-" . $admSchool->code;
+            $admSchool->code = $admSchool->code;
             $admSchool->save();
             $admTeacher = new AdmTeacher();
             $admTeacher->name = $admSchool->admin_name;

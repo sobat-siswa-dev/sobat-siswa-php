@@ -31,11 +31,4 @@ Route::prefix("/student")->group(function (){
     });
 });
 
-Route::prefix("/teacher")->group(function (){
-    Route::post("/login", [LoginController::class, 'loginTeacherEp']);
-    Route::middleware("rest.teacher")->group(function () {
-        Route::post("/profile", [LoginController::class, 'profileTeacherEp']);
-    });
-});
-
 Route::post("/refreshToken", [LoginController::class, 'refreshTokenEp']);

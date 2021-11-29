@@ -26,8 +26,11 @@ class LoginController extends Controller
     // Student Page   
         public function studentPage (Request $request, $schoolCode = null)
         {
+            $admSchool = AdmSchool::first();
+            if (!$admSchool) {
+                return redirect(url("/registration"));
+            }
             if ($request->get("submit")) {
-                $admSchool = AdmSchool::where("code", $request->get("code"))->first();
                 if ($admSchool) {
                     $admStudent = AdmStudent::where("nis", $request->get("student_nis"))
                                             ->where("school_id", $admSchool->id)
@@ -50,20 +53,18 @@ class LoginController extends Controller
                     $this->model["actionError"] = "Sekolah tidak terdaftar !";
                 }
             }
-            if ($schoolCode) {
-                $this->model["admSchool"] = AdmSchool::where("code", $schoolCode)->first();
-                if (!$this->model["admSchool"]) {
-                    return redirect(url("/login-student"));
-                }
-            }
+            $this->model["admSchool"]   =   $admSchool;
             return view("login.student", $this->model);
         }
 
     // Teacher Page   
         public function teacherPage (Request $request, $schoolCode = null)
         {
+            $admSchool = AdmSchool::first();
+            if (!$admSchool) {
+                return redirect(url("/registration"));
+            }
             if ($request->get("submit")) {
-                $admSchool = AdmSchool::where("code", $request->get("code"))->first();
                 if ($admSchool) {
                     $admTeacher = AdmTeacher::where("email", $request->get("teacher_email"))
                                             ->where("school_id", $admSchool->id)
@@ -86,20 +87,14 @@ class LoginController extends Controller
                     $this->model["actionError"] = "Sekolah tidak terdaftar !";
                 }
             }
-            if ($schoolCode) {
-                $this->model["admSchool"] = AdmSchool::where("code", $schoolCode)->first();
-                if (!$this->model["admSchool"]) {
-                    return redirect(url("/login-teacher"));
-                }
-            }
+            $this->model["admSchool"]   =   $admSchool;
             return view("login.teacher", $this->model);
         }
 
     // Logout Page
         public function logoutPage (Request $request)
         {
-            $schoolCode = session()->get("admSchool")->code;
             session()->flush();
-            return redirect(url("/login-student/$schoolCode"));
+            return redirect(url("/login-student"));
         }
 }

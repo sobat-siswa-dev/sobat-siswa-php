@@ -21,7 +21,7 @@
 
     .navbar-overlap:after {
         background-image: url("{{ asset('staticRes/edu-2.png') }}");
-        background-color: #3955a4;
+        background-color: {{ session()->has("admSchool") ? (session()->get("admSchool")->color ? session()->get("admSchool")->color : '#3955a4') : '#3955a4' }};
         background-position: center;
         background-size: cover;
     }
@@ -42,6 +42,10 @@
     }
     
     @media (max-width: 768px) {
+        .navbar-dark {
+            background-color: {{ session()->has("admSchool") ? (session()->get("admSchool")->color ? session()->get("admSchool")->color : '#3955a4') : '#3955a4' }};
+        }
+
         .navbar .navbar-nav .nav-link {
             justify-content: start;
         }
