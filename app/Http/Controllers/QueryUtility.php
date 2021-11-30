@@ -70,6 +70,7 @@ class QueryUtility
             where 
                 ac.school_id = $school_id 
                 and ast.is_active in (1,2)
+                and bv.periode = '" . Utility::currentSemesterPeriode() . "' 
             order by
                 bv.id desc
             limit 3

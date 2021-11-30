@@ -16,6 +16,8 @@ use App\Models\{
     KbmAnnouncement
 };
 
+use App\Http\Controllers\Utility;
+
 class StGlobalController extends Controller
 {
     // Model
@@ -28,6 +30,7 @@ class StGlobalController extends Controller
                                                         ->orderBy("get_at", "DESC")->limit(3)->get();
             $this->model["behViolationRecent"]   =   BehViolation::where("student_id", session()->get("admStudent")->id)
                                                         ->where("class_id", session()->get("admStudent")->class_id)
+                                                        ->where("periode", Utility::currentSemesterPeriode())
                                                         ->orderBy("get_at", "DESC")->limit(3)->get();
             $this->model['kbmAnnouncementRecent'] =   KbmAnnouncement::where("school_id", session()->get("admSchool")->id)
                                                             ->orderBy("id", "DESC")->limit(3)->get();

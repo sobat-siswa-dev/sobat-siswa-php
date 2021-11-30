@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use App\Http\Controllers\Utility;
+
 class AdmStudent extends Model
 {
     use HasFactory;
@@ -31,7 +33,10 @@ class AdmStudent extends Model
     }
 
     public function countViolationPoin () {
-        $behViolationList = BehViolation::where("student_id", $this->id)->where("class_id", $this->class_id)->get();
+        $behViolationList = BehViolation::where("student_id", $this->id)
+                                        ->where("class_id", $this->class_id)
+                                        ->where("periode", Utility::currentSemesterPeriode())
+                                        ->get();
         $returnCount = 0;
         foreach ($behViolationList as $behViolation) {
             $returnCount += $behViolation->poin;

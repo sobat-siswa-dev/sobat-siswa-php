@@ -137,6 +137,9 @@ class AttitudeController extends Controller
                     $behViolation->code = $admRule->code;
                     $behViolation->student_id = $id;
                     $behViolation->class_id = $admStudent->class_id;
+                    if (!$behViolation->periode) {
+                        $behViolation->periode = Utility::currentSemesterPeriode();
+                    }
                     if ($request->file("attch")) {
                         $behViolation->attch = Utility::uploadFile($request, "attch", "attch-violation/");
                     }
@@ -153,6 +156,7 @@ class AttitudeController extends Controller
                     $this->model["admStudent"]  =   AdmStudent::find($id);
                     $this->model["behViolationList"]   =   BehViolation::where("student_id", $id)
                                                                 ->where("class_id", $this->model["admStudent"]->class_id)
+                                                                ->where("periode", Utility::currentSemesterPeriode())
                                                                 ->orderBy("get_at", "DESC")->get();
                     return \Excel::download(new ExpViolation($this->model), "Data-Pelanggaran-NIS-" . $this->model["admStudent"]->nis . ".xlsx");
                 }
@@ -163,6 +167,7 @@ class AttitudeController extends Controller
             $this->model["admStudent"]  =   AdmStudent::find($id);
             $this->model["behViolationList"]   =   BehViolation::where("student_id", $id)
                                                         ->where("class_id", $this->model["admStudent"]->class_id)
+                                                        ->where("periode", Utility::currentSemesterPeriode())
                                                         ->orderBy("get_at", "DESC")->get();
             return view("application.violation.view", $this->model);
         }

@@ -43,4 +43,10 @@ class Utility
         }
         return $newName;
     }
+
+    public static function currentSemesterPeriode () {
+        $month = date("m");
+        $year = date("Y");
+        return $month > 7 ? $year . "/" . ($year + 1) : ($year - 1) . "/" . $year;
+    }
 }

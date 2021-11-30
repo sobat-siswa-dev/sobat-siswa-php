@@ -11,6 +11,8 @@ use App\Models\{
     BehCounseling
 };
 
+use App\Http\Controllers\Utility;
+
 class StAttitudeController extends Controller
 {
     // Model
@@ -29,6 +31,7 @@ class StAttitudeController extends Controller
         {
             $this->model["behViolationList"]   =   BehViolation::where("student_id", session()->get("admStudent")->id)
                                                         ->where("class_id", session()->get("admStudent")->class_id)
+                                                        ->where("periode", Utility::currentSemesterPeriode())
                                                         ->orderBy("get_at", "DESC")->get();
             return view("applicationst.Violation.list", $this->model);
         }
