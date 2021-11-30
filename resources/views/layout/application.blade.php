@@ -28,10 +28,8 @@
                                 <div class="d-none d-xl-block ps-2 ml-3">
                                     <div class="text-white">{{ session()->get("admTeacher")->name }}</div>
                                     <div class="mt-1 small text-muted">
-                                        @if (session()->get("admTeacher")->role == 0)
-                                            Pengelola
-                                        @elseif (session()->get("admTeacher")->role == 1)
-                                            Guru
+                                        @if (session()->get("admTeacher")->role >= 0 || session()->get("admTeacher")->role <= 3)
+                                            {{ (["Pengelola", "Tata Usaha", "Kesiswaan / Bimbingan Konseling", "Guru Umum"])[session()->get("admTeacher")->role] }}
                                         @endif
                                     </div>
                                 </div>
@@ -98,9 +96,19 @@
         });
     </script>
     @if (session()->has("admTeacher"))
-        @if (session()->get("admTeacher")->role != 0)
+        @if (in_array(session()->get("admTeacher")->role, [3, 2]))
             <script>
                 if (window.location.href.includes("/master")) {
+                    $('[data-btn-function="form"]').remove();
+                }
+                if (window.location.href.includes("/learning/report")) {
+                    $('[data-btn-function="form"]').remove();
+                }
+            </script>
+        @endif
+        @if (in_array(session()->get("admTeacher")->role, [3, 1]))
+            <script>
+                if (window.location.href.includes("/attitude")) {
                     $('[data-btn-function="form"]').remove();
                 }
             </script>

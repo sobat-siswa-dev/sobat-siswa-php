@@ -29,15 +29,11 @@
                 </div>
                 <div class="col-md-8 d-block">
                     <div class="card">
-                        <div class="card-header">
+                        <div class="card-header" data-btn-function="form">
                             <form method="POST" action="">
                                 {{ csrf_field() }}
                                 <button name="submit-form" class="btn btn-sm btn-primary">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg> Tambah
-                                </button>  
-                                &nbsp;
-                                <button data-btn-function="export" class="btn btn-sm btn-success">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M11.5 20h-5.5a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v7.5m-16 -3.5h16m-10 -6v16m4 -1h7m-3 -3l3 3l-3 3" /></svg> Export
                                 </button>  
                             </form>
                         </div>
@@ -80,7 +76,7 @@
                                                     </a>
                                                     &nbsp;
                                                 @endif
-                                                <form method="POST" action="" class="d-inline-block">
+                                                <form method="POST" data-btn-function="form" action="" class="d-inline-block">
                                                     {{ csrf_field() }}
                                                     <input type="hidden" name="id" value="{{ $behTrophy->id }}"/>
                                                     <button name="submit-form" class="btn-table btn btn-sm btn-default">

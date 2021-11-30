@@ -149,8 +149,8 @@ class MasterController extends Controller
                     if ($request->get("password")) {
                         $admTeacher->password = bcrypt($request->get("password"));
                     }
-                    if (!$admTeacher->role) {
-                        $admTeacher->role   =   1;
+                    if ($request->has("role")) {
+                        $admTeacher->role   =   $request->get("role");
                     }
                     $admTeacher->save();
                     return Redirect::to(url("/master/teacher"))

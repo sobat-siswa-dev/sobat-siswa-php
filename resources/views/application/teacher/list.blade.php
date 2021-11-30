@@ -77,10 +77,8 @@
                                                 {{ $admTeacher->phone }}
                                             </td>
                                             <td>
-                                                @if ($admTeacher->role == 0)
-                                                    Pengelola
-                                                @elseif ($admTeacher->role == 1)
-                                                    Guru
+                                                @if ($admTeacher->role >= 0 || $admTeacher->role <= 3)
+                                                    {{ (["Pengelola", "Tata Usaha", "Kesiswaan / Bimbingan Konseling", "Guru Umum"])[$admTeacher->role] }}
                                                 @endif
                                             </td>
                                             <td data-btn-function="form">

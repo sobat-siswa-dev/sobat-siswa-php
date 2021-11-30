@@ -54,6 +54,24 @@
                                             </label>
                                             <input name="structural_pos" value="{{ $admTeacher->structural_pos }}" type="text" maxlength="100" class="form-control">
                                         </div>
+                                        @if ($admTeacher->role == 0 && !(is_null($admTeacher->role)))
+                                            <div class="form-group mb-3">
+                                                <label class="form-label">
+                                                    Role Aplikasi <sup class="font-bold text-red">*</sup>
+                                                </label>
+                                                <select name="role" required="" class="form-control">
+                                                    <option value="3">
+                                                        Guru Umum
+                                                    </option>
+                                                    <option value="2">
+                                                        Kesiswaan / Bimbingan Konseling
+                                                    </option>
+                                                    <option value="1">
+                                                        Tata Usaha
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        @endif
                                         <div class="form-group mb-3">
                                             <label class="form-label">
                                                 Email <sup class="font-bold text-red">*</sup>
@@ -123,4 +141,7 @@
         </div>
         @include("assets.copyright")
     </div>
+    <script>
+        $('[name="role"]').val('{{ $admTeacher->role }}');
+    </script>
 @stop
