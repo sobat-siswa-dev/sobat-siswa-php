@@ -66,7 +66,10 @@ class LoginController extends Controller
             }
             if ($request->get("submit")) {
                 if ($admSchool) {
-                    $admTeacher = AdmTeacher::where("email", $request->get("teacher_email"))
+                    $admTeacher = AdmTeacher::where(function($query) use ($request) {
+                                                $query->where("email", $request->get("teacher_id"))
+                                                    ->orWhere("nip", $request->get("teacher_id"));
+                                            })
                                             ->where("school_id", $admSchool->id)
                                             ->where("is_active", "1")
                                             ->first();

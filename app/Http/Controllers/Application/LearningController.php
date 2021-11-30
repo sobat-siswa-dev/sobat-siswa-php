@@ -119,14 +119,6 @@ class LearningController extends Controller
                     if ($this->model["kbmReportBe"]) {
                         $result = [];
                         foreach ($this->model["kbmReportDetList"] as $kbmReportDet) {
-                            $kbmReportDetBe = KbmReportDet::where("report_id", $this->model["kbmReportBe"]->id)
-                                                        ->where("subject_id", $kbmReportDet->subject_id)
-                                                        ->first();
-                            if ($kbmReportDetBe) {
-                                $kbmReportDet->mark_knowledge_be = $kbmReportDetBe->mark_knowledge;
-                                $kbmReportDet->mark_practice_be = $kbmReportDetBe->mark_practice;
-                                $kbmReportDet->mark_total_be = $kbmReportDetBe->mark_total;
-                            }
                             $result[]   =   $kbmReportDet;
                         }
                         $this->model["kbmReportDetList"] = $result;

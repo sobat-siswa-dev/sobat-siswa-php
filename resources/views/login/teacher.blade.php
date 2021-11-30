@@ -10,7 +10,7 @@
     <div class="container-tight py-6">
         <div class="text-center mb-4">
             <a href="#">
-                <img src="{{ asset($admSchool->logo ? $admSchool->logo : './distRes/img/school-placeholder.png') }}" height="120" alt="Logo Sekolah">
+                <img src="{{ asset($admSchool->logo ? $admSchool->logo : './distRes/img/school-placeholder.png') }}" height="150" alt="Logo Sekolah">
             </a>
         </div>
         <form action="" method="POST">
@@ -47,8 +47,8 @@
                 </div>
                 <div class="card-body">
                     <div class="mb-3">
-                        <label class="form-label">Email Pengguna</label>
-                        <input required="" name="teacher_email" type="email" maxlength="100" class="form-control" autocomplete="off">
+                        <label class="form-label">NIP / Email Pengguna</label>
+                        <input required="" name="teacher_id" type="text" maxlength="100" class="form-control" autocomplete="off">
                     </div>
                     <div class="mb-3">
                         <label class="form-label">

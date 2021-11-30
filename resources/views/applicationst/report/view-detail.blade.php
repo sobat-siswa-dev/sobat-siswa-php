@@ -113,31 +113,9 @@
                                             </td>
                                             <td>
                                                 {{ $kbmReportDet->mark_knowledge ? $kbmReportDet->mark_knowledge : '-' }}
-                                                @if ($kbmReportDet->mark_knowledge && $kbmReportDet->mark_knowledge_be)
-                                                    @if ($kbmReportDet->mark_knowledge > $kbmReportDet->mark_knowledge_be)
-                                                        <sup class="text-success" title="Lebih tinggi dibanding semester sebelumnya.">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="5" height="5" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><line x1="12" y1="5" x2="12" y2="19" /><line x1="18" y1="11" x2="12" y2="5" /><line x1="6" y1="11" x2="12" y2="5" /></svg>
-                                                        </sup>
-                                                    @elseif ($kbmReportDet->mark_knowledge < $kbmReportDet->mark_knowledge_be)
-                                                        <sup class="text-danger" title="Lebih rendah dibanding semester sebelumnya.">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="5" height="5" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><line x1="12" y1="5" x2="12" y2="19" /><line x1="18" y1="13" x2="12" y2="19" /><line x1="6" y1="13" x2="12" y2="19" /></svg>
-                                                        </sup>
-                                                    @endif
-                                                @endif
                                             </td>
                                             <td>
                                                 {{ $kbmReportDet->mark_practice ? $kbmReportDet->mark_practice : '-' }}
-                                                @if ($kbmReportDet->mark_practice && $kbmReportDet->mark_practice_be)
-                                                    @if ($kbmReportDet->mark_practice > $kbmReportDet->mark_practice_be)
-                                                        <sup class="text-success" title="Lebih tinggi dibanding semester sebelumnya.">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="5" height="5" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><line x1="12" y1="5" x2="12" y2="19" /><line x1="18" y1="11" x2="12" y2="5" /><line x1="6" y1="11" x2="12" y2="5" /></svg>
-                                                        </sup>
-                                                    @elseif ($kbmReportDet->mark_practice < $kbmReportDet->mark_practice_be)
-                                                        <sup class="text-danger" title="Lebih rendah dibanding semester sebelumnya.">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="5" height="5" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><line x1="12" y1="5" x2="12" y2="19" /><line x1="18" y1="13" x2="12" y2="19" /><line x1="6" y1="13" x2="12" y2="19" /></svg>
-                                                        </sup>
-                                                    @endif
-                                                @endif
                                             </td>
                                             <td>
                                                 {{ $kbmReportDet->mark_limit }}
@@ -151,17 +129,6 @@
                                                     <b class="text-primary">
                                                         {{ $kbmReportDet->mark_total }}
                                                     </b>
-                                                @endif
-                                                @if ($kbmReportDet->mark_total && $kbmReportDet->mark_total_be)
-                                                    @if ($kbmReportDet->mark_total > $kbmReportDet->mark_total_be)
-                                                        <sup class="text-success" title="Lebih tinggi dibanding semester sebelumnya.">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="5" height="5" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><line x1="12" y1="5" x2="12" y2="19" /><line x1="18" y1="11" x2="12" y2="5" /><line x1="6" y1="11" x2="12" y2="5" /></svg>
-                                                        </sup>
-                                                    @elseif ($kbmReportDet->mark_total < $kbmReportDet->mark_total_be)
-                                                        <sup class="text-danger" title="Lebih rendah dibanding semester sebelumnya.">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="5" height="5" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><line x1="12" y1="5" x2="12" y2="19" /><line x1="18" y1="13" x2="12" y2="19" /><line x1="6" y1="13" x2="12" y2="19" /></svg>
-                                                        </sup>
-                                                    @endif
                                                 @endif
                                             </td>
                                         </tr>
